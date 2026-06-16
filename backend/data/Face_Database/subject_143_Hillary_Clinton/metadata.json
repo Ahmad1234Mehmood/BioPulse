@@ -1,0 +1,25 @@
+{
+  "subject_id": 143,
+  "subject_name": "Hillary Clinton",
+  "total_images": 14,
+  "enrollment_count": 9,
+  "probe_count": 5,
+  "enrollment_indices": [
+    1471,
+    1472,
+    1804,
+    1929,
+    2478,
+    2658,
+    3182,
+    3449,
+    3882
+  ],
+  "probe_indices": [
+    4819,
+    5208,
+    5498,
+    5574,
+    5664
+  ]
+}

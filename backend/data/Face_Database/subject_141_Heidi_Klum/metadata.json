@@ -1,0 +1,16 @@
+{
+  "subject_id": 141,
+  "subject_name": "Heidi Klum",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    2679,
+    3164,
+    3441
+  ],
+  "probe_indices": [
+    4501,
+    4560
+  ]
+}

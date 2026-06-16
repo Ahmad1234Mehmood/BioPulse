@@ -1,0 +1,23 @@
+{
+  "subject_id": 174,
+  "subject_name": "Jennifer Garner",
+  "total_images": 12,
+  "enrollment_count": 8,
+  "probe_count": 4,
+  "enrollment_indices": [
+    127,
+    357,
+    402,
+    526,
+    986,
+    1237,
+    3167,
+    3589
+  ],
+  "probe_indices": [
+    4053,
+    4687,
+    5615,
+    5947
+  ]
+}

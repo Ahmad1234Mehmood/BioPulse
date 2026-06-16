@@ -1,0 +1,22 @@
+{
+  "subject_id": 292,
+  "subject_name": "Nicanor Duarte Frutos",
+  "total_images": 11,
+  "enrollment_count": 7,
+  "probe_count": 4,
+  "enrollment_indices": [
+    1356,
+    1902,
+    2258,
+    2263,
+    2451,
+    2945,
+    2989
+  ],
+  "probe_indices": [
+    3478,
+    4144,
+    4201,
+    4346
+  ]
+}

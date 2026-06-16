@@ -1,0 +1,25 @@
+{
+  "subject_id": 52,
+  "subject_name": "Britney Spears",
+  "total_images": 14,
+  "enrollment_count": 9,
+  "probe_count": 5,
+  "enrollment_indices": [
+    8,
+    733,
+    1233,
+    1469,
+    2282,
+    2536,
+    2838,
+    2860,
+    3464
+  ],
+  "probe_indices": [
+    3876,
+    4299,
+    5171,
+    5748,
+    5801
+  ]
+}

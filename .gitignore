@@ -1,0 +1,18 @@
+# Ignore backend dependencies/caches
+backend/__pycache__/
+backend/venv/
+backend/.env
+backend/.env.local
+backend/appData/
+
+# Ignore frontend dependencies/builds
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# General ignores
+.DS_Store
+.idea/
+.vscode/
+*.log

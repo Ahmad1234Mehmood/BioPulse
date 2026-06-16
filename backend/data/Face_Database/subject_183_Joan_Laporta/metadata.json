@@ -1,0 +1,20 @@
+{
+  "subject_id": 183,
+  "subject_name": "Joan Laporta",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    485,
+    1039,
+    1378,
+    1945,
+    2242,
+    2298
+  ],
+  "probe_indices": [
+    2810,
+    5166,
+    5572
+  ]
+}

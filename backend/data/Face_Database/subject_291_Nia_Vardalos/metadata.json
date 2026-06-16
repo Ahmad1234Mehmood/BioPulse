@@ -1,0 +1,16 @@
+{
+  "subject_id": 291,
+  "subject_name": "Nia Vardalos",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    2672,
+    4249,
+    4606
+  ],
+  "probe_indices": [
+    5148,
+    5692
+  ]
+}

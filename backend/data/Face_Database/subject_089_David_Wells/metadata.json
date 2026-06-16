@@ -1,0 +1,18 @@
+{
+  "subject_id": 89,
+  "subject_name": "David Wells",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    234,
+    331,
+    636,
+    1784
+  ],
+  "probe_indices": [
+    1795,
+    3945,
+    5384
+  ]
+}

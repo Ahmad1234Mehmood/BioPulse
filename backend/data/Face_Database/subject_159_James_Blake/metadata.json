@@ -1,0 +1,25 @@
+{
+  "subject_id": 159,
+  "subject_name": "James Blake",
+  "total_images": 14,
+  "enrollment_count": 9,
+  "probe_count": 5,
+  "enrollment_indices": [
+    1124,
+    1811,
+    1989,
+    2337,
+    2524,
+    2613,
+    4135,
+    4634,
+    4775
+  ],
+  "probe_indices": [
+    5143,
+    5294,
+    5588,
+    5771,
+    5862
+  ]
+}

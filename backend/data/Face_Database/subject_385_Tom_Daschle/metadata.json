@@ -1,0 +1,36 @@
+{
+  "subject_id": 385,
+  "subject_name": "Tom Daschle",
+  "total_images": 25,
+  "enrollment_count": 17,
+  "probe_count": 8,
+  "enrollment_indices": [
+    18,
+    273,
+    554,
+    940,
+    1063,
+    1130,
+    1373,
+    1481,
+    2099,
+    2684,
+    2751,
+    2883,
+    2901,
+    2923,
+    2988,
+    3243,
+    3245
+  ],
+  "probe_indices": [
+    3584,
+    3670,
+    4167,
+    4265,
+    4375,
+    4813,
+    5338,
+    5722
+  ]
+}

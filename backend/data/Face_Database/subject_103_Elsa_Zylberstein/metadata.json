@@ -1,0 +1,17 @@
+{
+  "subject_id": 103,
+  "subject_name": "Elsa Zylberstein",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    462,
+    719,
+    2244,
+    2640
+  ],
+  "probe_indices": [
+    3399,
+    4537
+  ]
+}

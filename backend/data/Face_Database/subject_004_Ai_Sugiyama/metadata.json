@@ -1,0 +1,16 @@
+{
+  "subject_id": 4,
+  "subject_name": "Ai Sugiyama",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    215,
+    3064,
+    4530
+  ],
+  "probe_indices": [
+    4638,
+    4751
+  ]
+}

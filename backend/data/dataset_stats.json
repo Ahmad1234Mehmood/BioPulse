@@ -1,0 +1,16 @@
+{
+  "dataset_name": "Labeled Faces in the Wild (LFW)",
+  "total_subjects": 423,
+  "total_images": 5985,
+  "min_images_per_subject": 5,
+  "enrollment_count": 4189,
+  "probe_count": 1796,
+  "enrollment_ratio": 0.7,
+  "probe_ratio": 0.3,
+  "image_height": 62,
+  "image_width": 47,
+  "image_channels": 1,
+  "data_directory": "D:\\MSC-UPEC\\2nd Semester\\facial-biometrics\\backend\\data\\Face_Database",
+  "enrollment_directory": "D:\\MSC-UPEC\\2nd Semester\\facial-biometrics\\backend\\data\\enrollment",
+  "probe_directory": "D:\\MSC-UPEC\\2nd Semester\\facial-biometrics\\backend\\data\\probe"
+}

@@ -1,0 +1,28 @@
+{
+  "subject_id": 191,
+  "subject_name": "John Kerry",
+  "total_images": 17,
+  "enrollment_count": 11,
+  "probe_count": 6,
+  "enrollment_indices": [
+    63,
+    180,
+    396,
+    1428,
+    2105,
+    2152,
+    2471,
+    2479,
+    2634,
+    2787,
+    3006
+  ],
+  "probe_indices": [
+    3577,
+    4002,
+    5174,
+    5454,
+    5581,
+    5754
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "subject_id": 40,
+  "subject_name": "Bill Frist",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    149,
+    861,
+    934,
+    1700,
+    2127,
+    2782
+  ],
+  "probe_indices": [
+    2946,
+    4336,
+    4500
+  ]
+}

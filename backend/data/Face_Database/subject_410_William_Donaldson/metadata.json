@@ -1,0 +1,18 @@
+{
+  "subject_id": 410,
+  "subject_name": "William Donaldson",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    811,
+    1685,
+    1881,
+    2473
+  ],
+  "probe_indices": [
+    4250,
+    4647,
+    5674
+  ]
+}

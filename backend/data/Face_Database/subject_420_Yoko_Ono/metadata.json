@@ -1,0 +1,17 @@
+{
+  "subject_id": 420,
+  "subject_name": "Yoko Ono",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    171,
+    260,
+    1196,
+    1714
+  ],
+  "probe_indices": [
+    4023,
+    4296
+  ]
+}

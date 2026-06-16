@@ -1,0 +1,18 @@
+{
+  "subject_id": 34,
+  "subject_name": "Ben Affleck",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1029,
+    1565,
+    2075,
+    2183
+  ],
+  "probe_indices": [
+    2864,
+    3639,
+    5891
+  ]
+}

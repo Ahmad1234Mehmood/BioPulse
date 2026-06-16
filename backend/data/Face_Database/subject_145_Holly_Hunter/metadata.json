@@ -1,0 +1,18 @@
+{
+  "subject_id": 145,
+  "subject_name": "Holly Hunter",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    83,
+    162,
+    2447,
+    3891
+  ],
+  "probe_indices": [
+    4115,
+    5417,
+    5444
+  ]
+}

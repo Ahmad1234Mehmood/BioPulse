@@ -1,0 +1,17 @@
+{
+  "subject_id": 398,
+  "subject_name": "Valery Giscard dEstaing",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    2003,
+    2228,
+    2974,
+    3007
+  ],
+  "probe_indices": [
+    4412,
+    4811
+  ]
+}

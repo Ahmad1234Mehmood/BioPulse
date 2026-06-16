@@ -1,0 +1,17 @@
+{
+  "subject_id": 351,
+  "subject_name": "Sarah Hughes",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1066,
+    1694,
+    2311,
+    3074
+  ],
+  "probe_indices": [
+    4744,
+    5811
+  ]
+}

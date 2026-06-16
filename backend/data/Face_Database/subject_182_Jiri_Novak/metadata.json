@@ -1,0 +1,22 @@
+{
+  "subject_id": 182,
+  "subject_name": "Jiri Novak",
+  "total_images": 11,
+  "enrollment_count": 7,
+  "probe_count": 4,
+  "enrollment_indices": [
+    129,
+    285,
+    1369,
+    2031,
+    2499,
+    4524,
+    4689
+  ],
+  "probe_indices": [
+    4975,
+    5159,
+    5517,
+    5652
+  ]
+}

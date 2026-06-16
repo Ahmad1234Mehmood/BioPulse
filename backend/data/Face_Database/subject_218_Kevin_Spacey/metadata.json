@@ -1,0 +1,16 @@
+{
+  "subject_id": 218,
+  "subject_name": "Kevin Spacey",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    384,
+    414,
+    634
+  ],
+  "probe_indices": [
+    3341,
+    5826
+  ]
+}

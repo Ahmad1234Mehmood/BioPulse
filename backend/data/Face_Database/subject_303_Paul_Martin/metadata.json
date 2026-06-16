@@ -1,0 +1,19 @@
+{
+  "subject_id": 303,
+  "subject_name": "Paul Martin",
+  "total_images": 8,
+  "enrollment_count": 5,
+  "probe_count": 3,
+  "enrollment_indices": [
+    61,
+    661,
+    1268,
+    1337,
+    1443
+  ],
+  "probe_indices": [
+    2410,
+    2518,
+    5961
+  ]
+}

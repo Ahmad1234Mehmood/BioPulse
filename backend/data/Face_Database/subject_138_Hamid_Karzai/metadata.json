@@ -1,0 +1,33 @@
+{
+  "subject_id": 138,
+  "subject_name": "Hamid Karzai",
+  "total_images": 22,
+  "enrollment_count": 15,
+  "probe_count": 7,
+  "enrollment_indices": [
+    28,
+    222,
+    632,
+    674,
+    829,
+    1339,
+    1400,
+    1629,
+    1943,
+    2053,
+    2814,
+    2824,
+    3028,
+    3051,
+    3508
+  ],
+  "probe_indices": [
+    3900,
+    4103,
+    4161,
+    4491,
+    4521,
+    5082,
+    5160
+  ]
+}

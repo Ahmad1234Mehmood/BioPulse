@@ -1,0 +1,16 @@
+{
+  "subject_id": 119,
+  "subject_name": "George Pataki",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    704,
+    791,
+    962
+  ],
+  "probe_indices": [
+    2085,
+    3154
+  ]
+}

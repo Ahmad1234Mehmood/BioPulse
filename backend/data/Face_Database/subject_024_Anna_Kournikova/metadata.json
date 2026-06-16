@@ -1,0 +1,23 @@
+{
+  "subject_id": 24,
+  "subject_name": "Anna Kournikova",
+  "total_images": 12,
+  "enrollment_count": 8,
+  "probe_count": 4,
+  "enrollment_indices": [
+    175,
+    563,
+    564,
+    1512,
+    1741,
+    1744,
+    1800,
+    2080
+  ],
+  "probe_indices": [
+    2581,
+    4302,
+    5142,
+    5641
+  ]
+}

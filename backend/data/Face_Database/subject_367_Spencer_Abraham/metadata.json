@@ -1,0 +1,28 @@
+{
+  "subject_id": 367,
+  "subject_name": "Spencer Abraham",
+  "total_images": 17,
+  "enrollment_count": 11,
+  "probe_count": 6,
+  "enrollment_indices": [
+    270,
+    367,
+    847,
+    884,
+    2126,
+    2178,
+    3094,
+    3436,
+    3567,
+    4428,
+    4910
+  ],
+  "probe_indices": [
+    5052,
+    5090,
+    5678,
+    5774,
+    5880,
+    5884
+  ]
+}

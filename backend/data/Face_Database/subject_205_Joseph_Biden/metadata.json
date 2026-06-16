@@ -1,0 +1,16 @@
+{
+  "subject_id": 205,
+  "subject_name": "Joseph Biden",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1521,
+    2186,
+    3323
+  ],
+  "probe_indices": [
+    3418,
+    5666
+  ]
+}

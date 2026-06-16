@@ -1,0 +1,30 @@
+{
+  "subject_id": 201,
+  "subject_name": "Joschka Fischer",
+  "total_images": 19,
+  "enrollment_count": 13,
+  "probe_count": 6,
+  "enrollment_indices": [
+    72,
+    345,
+    399,
+    776,
+    1079,
+    1260,
+    1338,
+    1617,
+    2215,
+    2400,
+    2480,
+    3060,
+    3356
+  ],
+  "probe_indices": [
+    4407,
+    4529,
+    4848,
+    5011,
+    5628,
+    5960
+  ]
+}

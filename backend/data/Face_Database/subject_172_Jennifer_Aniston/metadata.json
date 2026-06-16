@@ -1,0 +1,32 @@
+{
+  "subject_id": 172,
+  "subject_name": "Jennifer Aniston",
+  "total_images": 21,
+  "enrollment_count": 14,
+  "probe_count": 7,
+  "enrollment_indices": [
+    499,
+    1055,
+    1104,
+    1827,
+    2088,
+    2172,
+    2184,
+    2255,
+    2314,
+    2340,
+    2360,
+    2643,
+    2978,
+    3505
+  ],
+  "probe_indices": [
+    3760,
+    4399,
+    4740,
+    5177,
+    5285,
+    5407,
+    5600
+  ]
+}

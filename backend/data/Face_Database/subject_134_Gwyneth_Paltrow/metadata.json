@@ -1,0 +1,17 @@
+{
+  "subject_id": 134,
+  "subject_name": "Gwyneth Paltrow",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    566,
+    583,
+    3194,
+    4254
+  ],
+  "probe_indices": [
+    5095,
+    5934
+  ]
+}

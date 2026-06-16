@@ -1,0 +1,19 @@
+{
+  "subject_id": 189,
+  "subject_name": "John Edwards",
+  "total_images": 8,
+  "enrollment_count": 5,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1212,
+    1498,
+    3010,
+    4003,
+    4419
+  ],
+  "probe_indices": [
+    4510,
+    5379,
+    5689
+  ]
+}

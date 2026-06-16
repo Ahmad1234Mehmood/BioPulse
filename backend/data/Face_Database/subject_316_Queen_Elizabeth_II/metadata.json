@@ -1,0 +1,24 @@
+{
+  "subject_id": 316,
+  "subject_name": "Queen Elizabeth II",
+  "total_images": 13,
+  "enrollment_count": 9,
+  "probe_count": 4,
+  "enrollment_indices": [
+    198,
+    1340,
+    1539,
+    1889,
+    1987,
+    2237,
+    2324,
+    2773,
+    2915
+  ],
+  "probe_indices": [
+    3512,
+    3986,
+    4749,
+    5706
+  ]
+}

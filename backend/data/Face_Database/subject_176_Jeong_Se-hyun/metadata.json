@@ -1,0 +1,20 @@
+{
+  "subject_id": 176,
+  "subject_name": "Jeong Se-hyun",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    110,
+    843,
+    922,
+    1114,
+    1235,
+    3737
+  ],
+  "probe_indices": [
+    3997,
+    4348,
+    5224
+  ]
+}

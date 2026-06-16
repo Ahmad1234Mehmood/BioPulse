@@ -1,0 +1,20 @@
+{
+  "subject_id": 396,
+  "subject_name": "Vaclav Havel",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    121,
+    398,
+    585,
+    1116,
+    1519,
+    3301
+  ],
+  "probe_indices": [
+    3630,
+    3730,
+    4184
+  ]
+}

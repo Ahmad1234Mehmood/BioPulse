@@ -1,0 +1,21 @@
+{
+  "subject_id": 407,
+  "subject_name": "Walter Mondale",
+  "total_images": 10,
+  "enrollment_count": 7,
+  "probe_count": 3,
+  "enrollment_indices": [
+    237,
+    443,
+    1162,
+    2192,
+    2529,
+    2534,
+    3124
+  ],
+  "probe_indices": [
+    3800,
+    5504,
+    5865
+  ]
+}

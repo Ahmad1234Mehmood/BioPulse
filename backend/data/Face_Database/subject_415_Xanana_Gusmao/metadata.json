@@ -1,0 +1,16 @@
+{
+  "subject_id": 415,
+  "subject_name": "Xanana Gusmao",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    358,
+    759,
+    3915
+  ],
+  "probe_indices": [
+    4942,
+    5783
+  ]
+}

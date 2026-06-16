@@ -1,0 +1,16 @@
+{
+  "subject_id": 377,
+  "subject_name": "Thabo Mbeki",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1164,
+    2423,
+    3113
+  ],
+  "probe_indices": [
+    3797,
+    5976
+  ]
+}

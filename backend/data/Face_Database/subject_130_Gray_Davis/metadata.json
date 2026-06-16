@@ -1,0 +1,37 @@
+{
+  "subject_id": 130,
+  "subject_name": "Gray Davis",
+  "total_images": 26,
+  "enrollment_count": 18,
+  "probe_count": 8,
+  "enrollment_indices": [
+    24,
+    69,
+    245,
+    417,
+    529,
+    683,
+    690,
+    728,
+    1090,
+    1793,
+    1820,
+    2164,
+    2486,
+    2622,
+    2699,
+    2972,
+    3054,
+    3090
+  ],
+  "probe_indices": [
+    3215,
+    3260,
+    3277,
+    3661,
+    3701,
+    5155,
+    5528,
+    5633
+  ]
+}

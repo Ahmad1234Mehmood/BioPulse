@@ -1,0 +1,29 @@
+{
+  "subject_id": 310,
+  "subject_name": "Pervez Musharraf",
+  "total_images": 18,
+  "enrollment_count": 12,
+  "probe_count": 6,
+  "enrollment_indices": [
+    395,
+    892,
+    1463,
+    1524,
+    1558,
+    2069,
+    2229,
+    2618,
+    2778,
+    3499,
+    3729,
+    3969
+  ],
+  "probe_indices": [
+    4365,
+    4770,
+    4956,
+    5132,
+    5256,
+    5493
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject_id": 65,
+  "subject_name": "Chanda Rubin",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1121,
+    1868,
+    3101
+  ],
+  "probe_indices": [
+    4802,
+    5924
+  ]
+}

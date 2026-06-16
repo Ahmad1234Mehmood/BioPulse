@@ -1,0 +1,22 @@
+{
+  "subject_id": 62,
+  "subject_name": "Catherine Zeta-Jones",
+  "total_images": 11,
+  "enrollment_count": 7,
+  "probe_count": 4,
+  "enrollment_indices": [
+    300,
+    366,
+    446,
+    527,
+    793,
+    886,
+    1755
+  ],
+  "probe_indices": [
+    4294,
+    4309,
+    4713,
+    5466
+  ]
+}

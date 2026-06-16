@@ -1,0 +1,16 @@
+{
+  "subject_id": 31,
+  "subject_name": "Arnoldo Aleman",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    2125,
+    2947,
+    3443
+  ],
+  "probe_indices": [
+    3450,
+    4326
+  ]
+}

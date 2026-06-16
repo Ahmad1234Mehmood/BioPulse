@@ -1,0 +1,18 @@
+{
+  "subject_id": 91,
+  "subject_name": "Dennis Kucinich",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    360,
+    538,
+    1619,
+    3096
+  ],
+  "probe_indices": [
+    3825,
+    4900,
+    4971
+  ]
+}

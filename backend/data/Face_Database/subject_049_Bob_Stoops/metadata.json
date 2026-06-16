@@ -1,0 +1,18 @@
+{
+  "subject_id": 49,
+  "subject_name": "Bob Stoops",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    2961,
+    3146,
+    3253,
+    3257
+  ],
+  "probe_indices": [
+    3718,
+    5141,
+    5561
+  ]
+}

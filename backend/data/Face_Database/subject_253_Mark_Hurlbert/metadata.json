@@ -1,0 +1,16 @@
+{
+  "subject_id": 253,
+  "subject_name": "Mark Hurlbert",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    867,
+    1264,
+    1289
+  ],
+  "probe_indices": [
+    3339,
+    5611
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "subject_id": 243,
+  "subject_name": "Luis Horna",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    13,
+    629,
+    3075,
+    4753
+  ],
+  "probe_indices": [
+    5264,
+    5701
+  ]
+}

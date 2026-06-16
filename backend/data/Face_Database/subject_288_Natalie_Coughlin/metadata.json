@@ -1,0 +1,17 @@
+{
+  "subject_id": 288,
+  "subject_name": "Natalie Coughlin",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    503,
+    558,
+    1379,
+    2752
+  ],
+  "probe_indices": [
+    4596,
+    5761
+  ]
+}

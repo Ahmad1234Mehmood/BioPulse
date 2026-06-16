@@ -1,0 +1,16 @@
+{
+  "subject_id": 25,
+  "subject_name": "Antonio Banderas",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    243,
+    1060,
+    2071
+  ],
+  "probe_indices": [
+    4298,
+    4629
+  ]
+}

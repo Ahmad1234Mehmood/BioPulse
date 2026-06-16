@@ -1,0 +1,16 @@
+{
+  "subject_id": 267,
+  "subject_name": "Michael Phelps",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    327,
+    2866,
+    4153
+  ],
+  "probe_indices": [
+    5152,
+    5702
+  ]
+}

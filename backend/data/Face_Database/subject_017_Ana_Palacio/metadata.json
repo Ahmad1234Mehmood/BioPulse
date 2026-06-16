@@ -1,0 +1,19 @@
+{
+  "subject_id": 17,
+  "subject_name": "Ana Palacio",
+  "total_images": 8,
+  "enrollment_count": 5,
+  "probe_count": 3,
+  "enrollment_indices": [
+    241,
+    439,
+    1637,
+    1919,
+    2265
+  ],
+  "probe_indices": [
+    4890,
+    5758,
+    5871
+  ]
+}

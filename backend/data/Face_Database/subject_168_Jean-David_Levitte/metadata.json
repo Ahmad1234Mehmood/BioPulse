@@ -1,0 +1,21 @@
+{
+  "subject_id": 168,
+  "subject_name": "Jean-David Levitte",
+  "total_images": 10,
+  "enrollment_count": 7,
+  "probe_count": 3,
+  "enrollment_indices": [
+    150,
+    667,
+    1187,
+    1238,
+    1300,
+    1489,
+    3490
+  ],
+  "probe_indices": [
+    4108,
+    5192,
+    5306
+  ]
+}

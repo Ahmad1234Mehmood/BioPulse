@@ -1,0 +1,19 @@
+{
+  "subject_id": 270,
+  "subject_name": "Michelle Kwan",
+  "total_images": 8,
+  "enrollment_count": 5,
+  "probe_count": 3,
+  "enrollment_indices": [
+    335,
+    2188,
+    2443,
+    2496,
+    3863
+  ],
+  "probe_indices": [
+    4658,
+    4699,
+    5000
+  ]
+}

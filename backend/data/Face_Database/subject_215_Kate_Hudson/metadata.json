@@ -1,0 +1,20 @@
+{
+  "subject_id": 215,
+  "subject_name": "Kate Hudson",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    828,
+    1648,
+    3739,
+    4315,
+    4420,
+    4879
+  ],
+  "probe_indices": [
+    4991,
+    5113,
+    5358
+  ]
+}

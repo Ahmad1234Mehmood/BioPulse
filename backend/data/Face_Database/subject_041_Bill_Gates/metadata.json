@@ -1,0 +1,28 @@
+{
+  "subject_id": 41,
+  "subject_name": "Bill Gates",
+  "total_images": 17,
+  "enrollment_count": 11,
+  "probe_count": 6,
+  "enrollment_indices": [
+    405,
+    515,
+    1014,
+    1623,
+    1698,
+    1932,
+    2541,
+    2690,
+    3081,
+    3141,
+    3169
+  ],
+  "probe_indices": [
+    3807,
+    4473,
+    5538,
+    5624,
+    5665,
+    5846
+  ]
+}

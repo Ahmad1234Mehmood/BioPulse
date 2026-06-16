@@ -1,0 +1,20 @@
+{
+  "subject_id": 395,
+  "subject_name": "Tung Chee-hwa",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    64,
+    713,
+    2274,
+    2363,
+    3558,
+    3775
+  ],
+  "probe_indices": [
+    3938,
+    4287,
+    5778
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "subject_id": 212,
+  "subject_name": "Justine Pasek",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    440,
+    1857,
+    2943,
+    5191
+  ],
+  "probe_indices": [
+    5412,
+    5756,
+    5788
+  ]
+}

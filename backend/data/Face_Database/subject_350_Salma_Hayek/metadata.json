@@ -1,0 +1,24 @@
+{
+  "subject_id": 350,
+  "subject_name": "Salma Hayek",
+  "total_images": 13,
+  "enrollment_count": 9,
+  "probe_count": 4,
+  "enrollment_indices": [
+    238,
+    400,
+    2130,
+    2427,
+    2979,
+    3026,
+    3049,
+    3091,
+    3305
+  ],
+  "probe_indices": [
+    4836,
+    5305,
+    5514,
+    5860
+  ]
+}

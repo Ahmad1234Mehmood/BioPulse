@@ -1,0 +1,24 @@
+{
+  "subject_id": 117,
+  "subject_name": "George HW Bush",
+  "total_images": 13,
+  "enrollment_count": 9,
+  "probe_count": 4,
+  "enrollment_indices": [
+    43,
+    1729,
+    2349,
+    2577,
+    2818,
+    3159,
+    3843,
+    4175,
+    4253
+  ],
+  "probe_indices": [
+    4656,
+    4707,
+    5452,
+    5680
+  ]
+}

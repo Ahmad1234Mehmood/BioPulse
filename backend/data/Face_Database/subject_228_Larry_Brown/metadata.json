@@ -1,0 +1,18 @@
+{
+  "subject_id": 228,
+  "subject_name": "Larry Brown",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    276,
+    815,
+    1982,
+    2403
+  ],
+  "probe_indices": [
+    4502,
+    5081,
+    5584
+  ]
+}

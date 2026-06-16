@@ -1,0 +1,21 @@
+{
+  "subject_id": 163,
+  "subject_name": "Jason Kidd",
+  "total_images": 10,
+  "enrollment_count": 7,
+  "probe_count": 3,
+  "enrollment_indices": [
+    9,
+    461,
+    1151,
+    1263,
+    2600,
+    3272,
+    3311
+  ],
+  "probe_indices": [
+    5447,
+    5606,
+    5747
+  ]
+}

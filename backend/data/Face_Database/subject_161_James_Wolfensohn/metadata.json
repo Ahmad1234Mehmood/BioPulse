@@ -1,0 +1,16 @@
+{
+  "subject_id": 161,
+  "subject_name": "James Wolfensohn",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    16,
+    1183,
+    2253
+  ],
+  "probe_indices": [
+    3122,
+    4182
+  ]
+}

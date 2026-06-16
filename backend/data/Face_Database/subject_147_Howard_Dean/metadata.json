@@ -1,0 +1,23 @@
+{
+  "subject_id": 147,
+  "subject_name": "Howard Dean",
+  "total_images": 12,
+  "enrollment_count": 8,
+  "probe_count": 4,
+  "enrollment_indices": [
+    641,
+    1119,
+    1308,
+    1352,
+    1396,
+    1412,
+    1452,
+    1707
+  ],
+  "probe_indices": [
+    2090,
+    2387,
+    3410,
+    5648
+  ]
+}

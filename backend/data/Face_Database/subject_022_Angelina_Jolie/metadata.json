@@ -1,0 +1,31 @@
+{
+  "subject_id": 22,
+  "subject_name": "Angelina Jolie",
+  "total_images": 20,
+  "enrollment_count": 14,
+  "probe_count": 6,
+  "enrollment_indices": [
+    436,
+    974,
+    1724,
+    1803,
+    2106,
+    2114,
+    2494,
+    2552,
+    2697,
+    3021,
+    3038,
+    3448,
+    3780,
+    4194
+  ],
+  "probe_indices": [
+    4202,
+    4232,
+    4381,
+    4469,
+    4614,
+    5175
+  ]
+}

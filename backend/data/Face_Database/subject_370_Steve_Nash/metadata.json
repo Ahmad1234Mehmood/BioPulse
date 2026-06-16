@@ -1,0 +1,16 @@
+{
+  "subject_id": 370,
+  "subject_name": "Steve Nash",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    111,
+    676,
+    1692
+  ],
+  "probe_indices": [
+    5165,
+    5890
+  ]
+}

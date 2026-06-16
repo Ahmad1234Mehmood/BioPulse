@@ -1,0 +1,16 @@
+{
+  "subject_id": 213,
+  "subject_name": "Kalpana Chawla",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    865,
+    1256,
+    2764
+  ],
+  "probe_indices": [
+    4636,
+    5315
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "subject_id": 14,
+  "subject_name": "Amelia Vega",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    3231,
+    3773,
+    3920,
+    4377
+  ],
+  "probe_indices": [
+    4807,
+    5685,
+    5908
+  ]
+}

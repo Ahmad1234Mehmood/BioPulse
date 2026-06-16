@@ -1,0 +1,17 @@
+{
+  "subject_id": 55,
+  "subject_name": "Cameron Diaz",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    346,
+    570,
+    1688,
+    2101
+  ],
+  "probe_indices": [
+    2155,
+    2498
+  ]
+}

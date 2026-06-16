@@ -1,0 +1,18 @@
+{
+  "subject_id": 252,
+  "subject_name": "Mariah Carey",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    891,
+    919,
+    2333,
+    2724
+  ],
+  "probe_indices": [
+    3950,
+    4170,
+    4746
+  ]
+}

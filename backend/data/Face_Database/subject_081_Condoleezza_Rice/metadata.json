@@ -1,0 +1,22 @@
+{
+  "subject_id": 81,
+  "subject_name": "Condoleezza Rice",
+  "total_images": 11,
+  "enrollment_count": 7,
+  "probe_count": 4,
+  "enrollment_indices": [
+    27,
+    1140,
+    1312,
+    1970,
+    2246,
+    2381,
+    2399
+  ],
+  "probe_indices": [
+    2698,
+    2811,
+    3192,
+    4331
+  ]
+}

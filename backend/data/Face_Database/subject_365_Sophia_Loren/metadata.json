@@ -1,0 +1,18 @@
+{
+  "subject_id": 365,
+  "subject_name": "Sophia Loren",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1418,
+    1468,
+    2000,
+    4750
+  ],
+  "probe_indices": [
+    5334,
+    5539,
+    5793
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject_id": 348,
+  "subject_name": "Russell Simmons",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1962,
+    2128,
+    2240
+  ],
+  "probe_indices": [
+    4266,
+    5335
+  ]
+}

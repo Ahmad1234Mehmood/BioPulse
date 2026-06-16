@@ -1,0 +1,28 @@
+{
+  "subject_id": 322,
+  "subject_name": "Renee Zellweger",
+  "total_images": 17,
+  "enrollment_count": 11,
+  "probe_count": 6,
+  "enrollment_indices": [
+    14,
+    353,
+    809,
+    1215,
+    1239,
+    2994,
+    3157,
+    3290,
+    3604,
+    3908,
+    4868
+  ],
+  "probe_indices": [
+    4875,
+    5051,
+    5354,
+    5557,
+    5655,
+    5806
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "subject_id": 372,
+  "subject_name": "Susan Sarandon",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    658,
+    1994,
+    2224,
+    3668
+  ],
+  "probe_indices": [
+    4314,
+    5475
+  ]
+}

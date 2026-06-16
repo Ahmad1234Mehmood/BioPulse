@@ -1,0 +1,26 @@
+{
+  "subject_id": 209,
+  "subject_name": "Julie Gerberding",
+  "total_images": 15,
+  "enrollment_count": 10,
+  "probe_count": 5,
+  "enrollment_indices": [
+    612,
+    1161,
+    1389,
+    2621,
+    2973,
+    3009,
+    3984,
+    4372,
+    4496,
+    4601
+  ],
+  "probe_indices": [
+    4840,
+    4889,
+    4892,
+    5477,
+    5524
+  ]
+}

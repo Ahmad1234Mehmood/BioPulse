@@ -1,0 +1,16 @@
+{
+  "subject_id": 106,
+  "subject_name": "Emma Watson",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1134,
+    1480,
+    1841
+  ],
+  "probe_indices": [
+    2077,
+    4474
+  ]
+}

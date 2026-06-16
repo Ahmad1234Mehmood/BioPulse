@@ -1,0 +1,16 @@
+{
+  "subject_id": 403,
+  "subject_name": "Victoria Clarke",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1230,
+    1262,
+    2962
+  ],
+  "probe_indices": [
+    3014,
+    3045
+  ]
+}

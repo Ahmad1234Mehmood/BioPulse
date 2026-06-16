@@ -1,0 +1,23 @@
+{
+  "subject_id": 216,
+  "subject_name": "Keanu Reeves",
+  "total_images": 12,
+  "enrollment_count": 8,
+  "probe_count": 4,
+  "enrollment_indices": [
+    463,
+    577,
+    656,
+    703,
+    1556,
+    1886,
+    2411,
+    3181
+  ],
+  "probe_indices": [
+    3421,
+    3869,
+    4411,
+    4447
+  ]
+}

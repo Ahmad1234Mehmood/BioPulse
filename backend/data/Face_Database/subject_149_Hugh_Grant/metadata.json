@@ -1,0 +1,20 @@
+{
+  "subject_id": 149,
+  "subject_name": "Hugh Grant",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    265,
+    313,
+    1075,
+    1492,
+    2396,
+    3398
+  ],
+  "probe_indices": [
+    3477,
+    4104,
+    5467
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject_id": 158,
+  "subject_name": "Jake Gyllenhaal",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1484,
+    1518,
+    1849
+  ],
+  "probe_indices": [
+    4779,
+    5060
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "subject_id": 221,
+  "subject_name": "Kim Ryong-sung",
+  "total_images": 11,
+  "enrollment_count": 7,
+  "probe_count": 4,
+  "enrollment_indices": [
+    412,
+    518,
+    985,
+    1159,
+    1578,
+    1689,
+    2549
+  ],
+  "probe_indices": [
+    3121,
+    3470,
+    4054,
+    4058
+  ]
+}

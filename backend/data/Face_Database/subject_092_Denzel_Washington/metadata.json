@@ -1,0 +1,16 @@
+{
+  "subject_id": 92,
+  "subject_name": "Denzel Washington",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    709,
+    1697,
+    2544
+  ],
+  "probe_indices": [
+    3665,
+    4187
+  ]
+}

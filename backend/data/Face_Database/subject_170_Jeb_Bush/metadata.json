@@ -1,0 +1,23 @@
+{
+  "subject_id": 170,
+  "subject_name": "Jeb Bush",
+  "total_images": 12,
+  "enrollment_count": 8,
+  "probe_count": 4,
+  "enrollment_indices": [
+    444,
+    601,
+    1084,
+    1458,
+    1486,
+    2148,
+    2556,
+    3069
+  ],
+  "probe_indices": [
+    4297,
+    5065,
+    5363,
+    5971
+  ]
+}

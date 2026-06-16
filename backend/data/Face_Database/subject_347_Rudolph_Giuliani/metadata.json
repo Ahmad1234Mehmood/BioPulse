@@ -1,0 +1,37 @@
+{
+  "subject_id": 347,
+  "subject_name": "Rudolph Giuliani",
+  "total_images": 26,
+  "enrollment_count": 18,
+  "probe_count": 8,
+  "enrollment_indices": [
+    155,
+    279,
+    390,
+    813,
+    885,
+    1157,
+    1236,
+    1574,
+    1660,
+    1968,
+    2004,
+    2035,
+    2161,
+    2193,
+    2344,
+    2611,
+    2795,
+    3205
+  ],
+  "probe_indices": [
+    3233,
+    4183,
+    4282,
+    4432,
+    4697,
+    4725,
+    5289,
+    5603
+  ]
+}

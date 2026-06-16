@@ -1,0 +1,16 @@
+{
+  "subject_id": 105,
+  "subject_name": "Emanuel Ginobili",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1774,
+    2821,
+    3238
+  ],
+  "probe_indices": [
+    3446,
+    3790
+  ]
+}

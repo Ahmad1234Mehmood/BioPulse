@@ -1,0 +1,18 @@
+{
+  "subject_id": 418,
+  "subject_name": "Yashwant Sinha",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    256,
+    662,
+    970,
+    1319
+  ],
+  "probe_indices": [
+    2355,
+    3465,
+    4999
+  ]
+}

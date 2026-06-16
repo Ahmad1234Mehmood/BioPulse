@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   BioPulse AI — Synthetic Neo-Dark
+   Shared custom styles (used across all pages)
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0b1326;
+  color: #dae2fd;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Material Symbols default weight/fill */
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/* ---- Signature glass surfaces ---- */
+.glass-panel,
+.glass-card {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ---- Backlit "inner glow" borders for CTAs ---- */
+.glow-button {
+  position: relative;
+  overflow: hidden;
+}
+.glow-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+.inner-glow {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.inner-glow-btn {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.inner-glow-primary {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+.glow-primary:hover {
+  box-shadow: 0 0 20px rgba(128, 131, 255, 0.3);
+}
+.glow-border {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ---- Deep-space mesh background (Dashboard hero/page) ---- */
+.mesh-bg {
+  background-color: #020617;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(73, 75, 214, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(128, 131, 255, 0.1) 0px, transparent 50%);
+}
+
+/* ---- Dotted chart background (Metrics) ---- */
+.chart-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* ---- Range slider thumb ---- */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #8083ff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(128, 131, 255, 0.5);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #8083ff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(128, 131, 255, 0.5);
+}
+
+/* ---- Themed scrollbars ---- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d3449;
+  border-radius: 10px;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile drawer transition */
+.drawer {
+  transition: transform 0.3s ease;
+}
+.drawer-overlay {
+  transition: opacity 0.3s ease;
+}
+body.drawer-open {
+  overflow: hidden;
+}
+
+/* Toast slide-in animation */
+@keyframes toastSlideIn {
+  from { transform: translateX(110%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+.toast-slide-in {
+  animation: toastSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}

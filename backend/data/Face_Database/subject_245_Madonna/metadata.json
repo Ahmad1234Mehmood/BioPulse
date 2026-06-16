@@ -1,0 +1,16 @@
+{
+  "subject_id": 245,
+  "subject_name": "Madonna",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    128,
+    286,
+    2214
+  ],
+  "probe_indices": [
+    2514,
+    4026
+  ]
+}

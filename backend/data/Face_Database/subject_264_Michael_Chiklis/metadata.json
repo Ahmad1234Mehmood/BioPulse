@@ -1,0 +1,16 @@
+{
+  "subject_id": 264,
+  "subject_name": "Michael Chiklis",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    2877,
+    4424,
+    4794
+  ],
+  "probe_indices": [
+    5247,
+    5326
+  ]
+}

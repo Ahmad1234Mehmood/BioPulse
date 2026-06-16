@@ -1,0 +1,33 @@
+{
+  "subject_id": 120,
+  "subject_name": "George Robertson",
+  "total_images": 22,
+  "enrollment_count": 15,
+  "probe_count": 7,
+  "enrollment_indices": [
+    4,
+    50,
+    236,
+    492,
+    631,
+    773,
+    1091,
+    1531,
+    1631,
+    1680,
+    2092,
+    2219,
+    2248,
+    2313,
+    2455
+  ],
+  "probe_indices": [
+    2582,
+    3671,
+    3977,
+    4487,
+    4786,
+    5380,
+    5386
+  ]
+}

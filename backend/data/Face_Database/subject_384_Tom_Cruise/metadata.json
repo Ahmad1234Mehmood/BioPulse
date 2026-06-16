@@ -1,0 +1,21 @@
+{
+  "subject_id": 384,
+  "subject_name": "Tom Cruise",
+  "total_images": 10,
+  "enrollment_count": 7,
+  "probe_count": 3,
+  "enrollment_indices": [
+    465,
+    752,
+    945,
+    1267,
+    1495,
+    3389,
+    4245
+  ],
+  "probe_indices": [
+    4783,
+    5250,
+    5505
+  ]
+}

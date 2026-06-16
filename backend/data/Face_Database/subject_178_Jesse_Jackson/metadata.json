@@ -1,0 +1,20 @@
+{
+  "subject_id": 178,
+  "subject_name": "Jesse Jackson",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    305,
+    1405,
+    1615,
+    1954,
+    4962,
+    5344
+  ],
+  "probe_indices": [
+    5459,
+    5657,
+    5917
+  ]
+}

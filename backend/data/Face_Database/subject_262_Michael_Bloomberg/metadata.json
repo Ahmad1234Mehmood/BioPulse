@@ -1,0 +1,31 @@
+{
+  "subject_id": 262,
+  "subject_name": "Michael Bloomberg",
+  "total_images": 20,
+  "enrollment_count": 14,
+  "probe_count": 6,
+  "enrollment_indices": [
+    68,
+    263,
+    457,
+    626,
+    680,
+    1190,
+    1353,
+    1963,
+    2264,
+    2513,
+    2516,
+    2858,
+    3261,
+    3540
+  ],
+  "probe_indices": [
+    3582,
+    3834,
+    4831,
+    5167,
+    5189,
+    5265
+  ]
+}

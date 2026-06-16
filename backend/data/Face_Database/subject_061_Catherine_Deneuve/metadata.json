@@ -1,0 +1,16 @@
+{
+  "subject_id": 61,
+  "subject_name": "Catherine Deneuve",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    7,
+    1632,
+    1828
+  ],
+  "probe_indices": [
+    3660,
+    3941
+  ]
+}

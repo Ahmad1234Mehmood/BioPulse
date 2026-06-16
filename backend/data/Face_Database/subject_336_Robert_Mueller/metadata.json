@@ -1,0 +1,16 @@
+{
+  "subject_id": 336,
+  "subject_name": "Robert Mueller",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    2717,
+    3764,
+    5195
+  ],
+  "probe_indices": [
+    5661,
+    5829
+  ]
+}

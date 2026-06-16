@@ -1,0 +1,20 @@
+{
+  "subject_id": 67,
+  "subject_name": "Charles Taylor",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    716,
+    1313,
+    2605,
+    3849,
+    4414,
+    4415
+  ],
+  "probe_indices": [
+    4526,
+    4941,
+    5275
+  ]
+}

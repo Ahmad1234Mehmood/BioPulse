@@ -1,0 +1,16 @@
+{
+  "subject_id": 114,
+  "subject_name": "Gene Robinson",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    972,
+    1174,
+    2448
+  ],
+  "probe_indices": [
+    3899,
+    5881
+  ]
+}

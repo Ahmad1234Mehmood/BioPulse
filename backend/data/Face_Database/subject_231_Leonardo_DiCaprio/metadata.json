@@ -1,0 +1,20 @@
+{
+  "subject_id": 231,
+  "subject_name": "Leonardo DiCaprio",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    470,
+    1815,
+    2038,
+    2525,
+    3254,
+    3391
+  ],
+  "probe_indices": [
+    3408,
+    4385,
+    5688
+  ]
+}

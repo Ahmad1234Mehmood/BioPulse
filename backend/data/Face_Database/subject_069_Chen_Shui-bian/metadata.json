@@ -1,0 +1,16 @@
+{
+  "subject_id": 69,
+  "subject_name": "Chen Shui-bian",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    542,
+    580,
+    902
+  ],
+  "probe_indices": [
+    1175,
+    4584
+  ]
+}

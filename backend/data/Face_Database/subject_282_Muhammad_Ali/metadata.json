@@ -1,0 +1,21 @@
+{
+  "subject_id": 282,
+  "subject_name": "Muhammad Ali",
+  "total_images": 10,
+  "enrollment_count": 7,
+  "probe_count": 3,
+  "enrollment_indices": [
+    451,
+    767,
+    1301,
+    1593,
+    2147,
+    3129,
+    3178
+  ],
+  "probe_indices": [
+    3884,
+    4575,
+    5074
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "subject_id": 111,
+  "subject_name": "Fidel Castro",
+  "total_images": 18,
+  "enrollment_count": 12,
+  "probe_count": 6,
+  "enrollment_indices": [
+    31,
+    369,
+    445,
+    1000,
+    1635,
+    1802,
+    1985,
+    2334,
+    2425,
+    2426,
+    2671,
+    3015
+  ],
+  "probe_indices": [
+    3893,
+    4044,
+    4648,
+    4830,
+    5530,
+    5926
+  ]
+}

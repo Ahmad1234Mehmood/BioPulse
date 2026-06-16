@@ -1,0 +1,16 @@
+{
+  "subject_id": 86,
+  "subject_name": "David Heymann",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    282,
+    2037,
+    2205
+  ],
+  "probe_indices": [
+    4600,
+    5591
+  ]
+}

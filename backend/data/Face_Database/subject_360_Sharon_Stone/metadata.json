@@ -1,0 +1,16 @@
+{
+  "subject_id": 360,
+  "subject_name": "Sharon Stone",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    2921,
+    3218,
+    5172
+  ],
+  "probe_indices": [
+    5575,
+    5773
+  ]
+}

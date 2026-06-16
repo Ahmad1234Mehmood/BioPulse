@@ -1,0 +1,30 @@
+{
+  "subject_id": 1,
+  "subject_name": "Abdullah Gul",
+  "total_images": 19,
+  "enrollment_count": 13,
+  "probe_count": 6,
+  "enrollment_indices": [
+    338,
+    365,
+    464,
+    511,
+    1217,
+    2657,
+    2753,
+    2754,
+    3089,
+    4112,
+    4251,
+    4359,
+    4556
+  ],
+  "probe_indices": [
+    4581,
+    5068,
+    5071,
+    5277,
+    5570,
+    5651
+  ]
+}

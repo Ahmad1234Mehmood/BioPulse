@@ -1,0 +1,16 @@
+{
+  "subject_id": 71,
+  "subject_name": "Christine Baumgartner",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    2383,
+    2398,
+    2766
+  ],
+  "probe_indices": [
+    2885,
+    3688
+  ]
+}

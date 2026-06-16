@@ -1,0 +1,16 @@
+{
+  "subject_id": 317,
+  "subject_name": "Queen Rania",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    173,
+    487,
+    1399
+  ],
+  "probe_indices": [
+    2174,
+    4780
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject_id": 74,
+  "subject_name": "Clara Harris",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1451,
+    2578,
+    3287
+  ],
+  "probe_indices": [
+    3826,
+    4822
+  ]
+}

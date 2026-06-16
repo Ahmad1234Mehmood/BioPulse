@@ -1,0 +1,17 @@
+{
+  "subject_id": 153,
+  "subject_name": "JK Rowling",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    779,
+    1473,
+    1594,
+    2637
+  ],
+  "probe_indices": [
+    2835,
+    4758
+  ]
+}

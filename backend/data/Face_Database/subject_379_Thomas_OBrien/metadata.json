@@ -1,0 +1,20 @@
+{
+  "subject_id": 379,
+  "subject_name": "Thomas OBrien",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    370,
+    2781,
+    2813,
+    2969,
+    3851,
+    4319
+  ],
+  "probe_indices": [
+    4515,
+    4882,
+    4897
+  ]
+}
