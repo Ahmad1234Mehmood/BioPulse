@@ -5,14 +5,6 @@ import { useApp } from "../context/AppContext";
 const AVATAR =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuAul6DqlH6L2YRHHHRq82V0cWVbmpeLwF2bHFQMWEyE3hf9ZAnxwpjihIeEFWmgxW4GlXigc_0sf9fFUolXMuOcccv4KqDpDxBIvYlygM9RjzpGeEAOhoG0qKqVNNXvS94DHjM6hAI8LhaHZk8CQZgRSFoWZtJdA9Yi5hmCM_O3YfINr8hvy9Ix-Sq0nB7wOiBjY9uwTHwpGb9Wck6bhcCohmgOUCrAo4vnaBeHNMPPgzsyXPZir2Eq4h81AOkfEPZiuiZquFer6diz";
 
-const SEARCH_RESULTS = [
-  { label: "Sarah Chen", sub: "BP-99210 · Enrolled · Standard", icon: "person" },
-  { label: "Alexander Volkov", sub: "USR-92831 · Active · Privileged Admin", icon: "person" },
-  { label: "Verification Mode (1:1)", sub: "Go to Verify page", icon: "verified_user" },
-  { label: "ROC Curve — v4.2.0 analysis", sub: "Metrics Dashboard", icon: "analytics" },
-  { label: "LowRes_Challenge Dataset", sub: "EXP-2024-075 · Under Review", icon: "dataset" },
-];
-
 const INITIAL_NOTIFS = [
   {
     id: 1,
@@ -46,11 +38,6 @@ const INITIAL_NOTIFS = [
 export default function TopBar({ onMenu }) {
   const { addToast } = useApp();
 
-  // Search
-  const [query, setQuery] = useState("");
-  const [showSearch, setShowSearch] = useState(false);
-  const searchRef = useRef(null);
-
   // Notifications
   const [showNotifs, setShowNotifs] = useState(false);
   const [notifs, setNotifs] = useState(INITIAL_NOTIFS);
@@ -59,20 +46,12 @@ export default function TopBar({ onMenu }) {
 
   useEffect(() => {
     const close = (e) => {
-      if (searchRef.current && !searchRef.current.contains(e.target))
-        setShowSearch(false);
       if (notifsRef.current && !notifsRef.current.contains(e.target))
         setShowNotifs(false);
     };
     document.addEventListener("mousedown", close);
     return () => document.removeEventListener("mousedown", close);
   }, []);
-
-  const filtered = SEARCH_RESULTS.filter(
-    (r) =>
-      r.label.toLowerCase().includes(query.toLowerCase()) ||
-      r.sub.toLowerCase().includes(query.toLowerCase())
-  );
 
   const markAllRead = () =>
     setNotifs((prev) => prev.map((n) => ({ ...n, read: true })));
@@ -94,58 +73,9 @@ export default function TopBar({ onMenu }) {
             </div>
             <span className="text-xl font-bold tracking-tight text-white">FaceMetrics</span>
           </div>
-
-          {/* Desktop search */}
-          <div className="relative w-64 hidden sm:block" ref={searchRef}>
-            <Icon
-              name="search"
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm pointer-events-none"
-            />
-            <input
-              type="text"
-              placeholder="Search system..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onFocus={() => setShowSearch(true)}
-              className="w-full bg-slate-900/50 border border-white/10 rounded-full py-1.5 pl-10 pr-4 text-xs focus:ring-1 focus:ring-indigo-500 focus:outline-none text-slate-300"
-            />
-            {showSearch && query.length >= 1 && (
-              <div className="absolute top-full mt-2 left-0 w-72 bg-slate-900 border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50">
-                {filtered.length > 0 ? (
-                  filtered.map((r, i) => (
-                    <button
-                      key={i}
-                      onMouseDown={() => {
-                        setQuery("");
-                        setShowSearch(false);
-                      }}
-                      className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors text-left"
-                    >
-                      <Icon name={r.icon} className="text-slate-500 text-sm shrink-0" />
-                      <div className="min-w-0">
-                        <div className="text-sm text-white truncate">{r.label}</div>
-                        <div className="text-[10px] text-slate-500 truncate">{r.sub}</div>
-                      </div>
-                    </button>
-                  ))
-                ) : (
-                  <div className="px-4 py-3 text-xs text-slate-500">
-                    No results for &ldquo;{query}&rdquo;
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
         </div>
 
         <div className="flex items-center gap-3 sm:gap-4">
-          <button
-            className="sm:hidden text-slate-400 hover:text-indigo-400 transition-colors"
-            aria-label="Search"
-          >
-            <Icon name="search" className="text-[20px]" />
-          </button>
-
           {/* Notifications */}
           <div className="relative" ref={notifsRef}>
             <button

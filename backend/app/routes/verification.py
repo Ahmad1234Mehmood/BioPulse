@@ -26,7 +26,8 @@ enrollment_service = EnrollmentService()
 async def verify_user(
     claimed_subject_id: str = Form(...),
     probe_image: UploadFile = File(...),
-    claim_image: Optional[UploadFile] = File(None)
+    claim_image: Optional[UploadFile] = File(None),
+    threshold: float = Form(0.70)
 ) -> Dict[str, Any]:
     """
     Verify if a provided face belongs to a specific enrolled user.
@@ -76,7 +77,7 @@ async def verify_user(
             template_emb = templates[claimed_subject_id]
             
         # Verify
-        result = matcher.verify(probe_emb, template_emb)
+        result = matcher.verify(probe_emb, template_emb, threshold=threshold)
         
         return {
             "status": "success",

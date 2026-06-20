@@ -3,7 +3,7 @@ Identification routes for 1:N facial identification.
 Searches a probe face against all enrolled users in the database.
 """
 
-from fastapi import APIRouter, File, UploadFile, HTTPException
+from fastapi import APIRouter, File, UploadFile, Form, HTTPException
 from typing import Dict, Any
 import logging
 import cv2
@@ -24,7 +24,8 @@ enrollment_service = EnrollmentService()
 
 @router.post("/identify")
 async def identify_user(
-    probe_image: UploadFile = File(...)
+    probe_image: UploadFile = File(...),
+    threshold: float = Form(0.70)
 ) -> Dict[str, Any]:
     """
     Identify a person by searching their face against all enrolled templates.
@@ -59,7 +60,8 @@ async def identify_user(
             "status": "success",
             "matches": top_matches,
             "probe_preview": probe_preview,
-            "probe_quality": probe_quality
+            "probe_quality": probe_quality,
+            "threshold": threshold
         }
         
     except NoFaceDetectedError as e:

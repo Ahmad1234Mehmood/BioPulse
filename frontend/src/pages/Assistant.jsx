@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import Icon from "../components/Icon";
 import { useApp } from "../context/AppContext";
 import { queryAssistant } from "../api/services";
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
 
 const PROFILE_IMG =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCdw6quLqKA5b8SZmhRQJnLX1mTRdkANAB749_VFO-OJ3_DTW9tN7uhxHJOD4wVnvoy6xMAtiHDy52R2jvXwGYn6zpKNClPOCENc1_aPZbuukG6Qvsz5M30heS0Fd5l745c0eHXZZRtpWr6KFVNvNRn8hfkZDPHfeno_P-xmNAXYQdrkqttrCzWMsK7x787kLg1IcgCChWcSmmRdMz4n9j91cCGQqpEgm-dFQkRkwykgB9roJn4CwlqqBs-XNQ425pZ9k2eqQuUaTa9";
@@ -54,6 +56,297 @@ const parseMarkdownToBlocks = (text) => {
   return blocks;
 };
 
+const generatePDFReport = (markdownText) => {
+  const doc = new jsPDF({
+    orientation: "portrait",
+    unit: "mm",
+    format: "a4"
+  });
+
+  const margin = 20;
+  const maxLineWidth = 170;
+  let y = 20;
+  const pageHeight = 297;
+
+  const checkPageOverflow = (heightNeeded) => {
+    if (y + heightNeeded > pageHeight - 20) {
+      doc.addPage();
+      
+      // Top header line
+      doc.setDrawColor(99, 102, 241);
+      doc.setLineWidth(0.5);
+      doc.line(margin, 12, margin + maxLineWidth, 12);
+      
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8);
+      doc.setTextColor(148, 163, 184);
+      doc.text("FaceMetrics AI - Biometric System Evaluation", margin, 10);
+      
+      y = 20;
+    }
+  };
+
+  // Header Background banner
+  doc.setFillColor(15, 23, 42);
+  doc.rect(0, 0, 210, 40, "F");
+
+  // Accent Line
+  doc.setFillColor(99, 102, 241);
+  doc.rect(0, 38, 210, 2, "F");
+
+  // Title
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(22);
+  doc.setTextColor(255, 255, 255);
+  doc.text("FaceMetrics AI", margin, 18);
+
+  // Subtitle
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+  doc.setTextColor(165, 180, 252);
+  doc.text("BIOMETRIC SYSTEM PERFORMANCE REPORT", margin, 26);
+
+  // Info
+  const dateStr = new Date().toLocaleDateString("en-US", {
+    year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit"
+  });
+  doc.setFontSize(8);
+  doc.setTextColor(148, 163, 184);
+  doc.text(`Generated: ${dateStr} | UPEC Facial Biometrics Lab`, margin, 32);
+
+  y = 52;
+
+  // Split lines
+  const lines = markdownText.split("\n");
+  let inCodeBlock = false;
+  let tableBuffer = [];
+
+  const flushPDFTable = () => {
+    if (tableBuffer.length === 0) return;
+
+    const tableRows = [];
+    for (let r = 0; r < tableBuffer.length; r++) {
+      const rawCells = tableBuffer[r].split("|").map(c => c.trim());
+      const rowCells = rawCells.slice(1, rawCells.length - 1);
+      if (rowCells.length === 0) continue;
+      // Skip separator lines like |---|---|
+      if (rowCells.every(cell => cell.startsWith("-") || cell === "")) {
+        continue;
+      }
+      tableRows.push(rowCells);
+    }
+
+    if (tableRows.length > 0) {
+      // Draw table using jspdf-autotable plugin
+      autoTable(doc, {
+        head: [tableRows[0]],
+        body: tableRows.slice(1),
+        startY: y - 2,
+        theme: "striped",
+        headStyles: {
+          fillColor: [15, 23, 42], // slate-900 header
+          textColor: [165, 180, 252], // indigo-200 text
+          fontStyle: "bold",
+          fontSize: 8.5
+        },
+        bodyStyles: {
+          textColor: [71, 85, 105], // slate-600 body
+          fontSize: 8
+        },
+        alternateRowStyles: {
+          fillColor: [248, 250, 252] // slate-50 alternating background
+        },
+        margin: { left: margin, right: margin },
+        styles: {
+          font: "helvetica",
+          cellPadding: 2,
+          lineColor: [241, 245, 249],
+          lineWidth: 0.1
+        }
+      });
+      
+      // Update Y coordinate to end of autoTable
+      y = doc.lastAutoTable.finalY + 5;
+    }
+
+    tableBuffer = [];
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+    let trimmed = line.trim();
+    
+    // Detect table line
+    const isTableLine = trimmed.startsWith("|");
+    if (!isTableLine) {
+      flushPDFTable();
+    }
+
+    if (!trimmed) {
+      if (!inCodeBlock) {
+        y += 4;
+      }
+      continue;
+    }
+
+    // Skip helper info or blockquote warning formatting
+    if (trimmed.startsWith(">") || trimmed.includes("GEMINI_API_KEY") || trimmed.includes("offline mode")) {
+      continue;
+    }
+
+    if (trimmed.startsWith("```")) {
+      inCodeBlock = !inCodeBlock;
+      continue;
+    }
+
+    if (inCodeBlock) {
+      checkPageOverflow(6);
+      doc.setFillColor(241, 245, 249); // slate-100 grey background
+      doc.rect(margin - 2, y - 3.5, maxLineWidth + 4, 5.5, "F");
+      
+      doc.setFont("courier", "normal");
+      doc.setFontSize(8.5);
+      doc.setTextColor(51, 65, 85);
+      doc.text(line, margin, y);
+      y += 5.5;
+      continue;
+    }
+
+    if (isTableLine) {
+      tableBuffer.push(line);
+      continue;
+    }
+
+    const cleanLineText = (txt) => txt.replace(/\*\*/g, "");
+
+    // Headings
+    if (trimmed.startsWith("###")) {
+      const headingText = cleanLineText(trimmed.slice(3).trim());
+      checkPageOverflow(10);
+      y += 4;
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(12);
+      doc.setTextColor(99, 102, 241);
+      doc.text(headingText, margin, y);
+      y += 6;
+    } else if (trimmed.startsWith("##")) {
+      const headingText = cleanLineText(trimmed.slice(2).trim());
+      checkPageOverflow(12);
+      y += 6;
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(14);
+      doc.setTextColor(30, 41, 59);
+      doc.text(headingText, margin, y);
+      y += 8;
+    } else if (trimmed.startsWith("#")) {
+      const headingText = cleanLineText(trimmed.slice(1).trim());
+      checkPageOverflow(14);
+      y += 8;
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(16);
+      doc.setTextColor(30, 41, 59);
+      doc.text(headingText, margin, y);
+      y += 10;
+    } else if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
+      // Bullet list item
+      const listContent = trimmed.slice(2).trim();
+      checkPageOverflow(7);
+      
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      doc.setTextColor(71, 85, 105);
+      doc.text("•", margin, y);
+      
+      const wrappedText = doc.splitTextToSize(listContent, maxLineWidth - 6);
+      for (let w = 0; w < wrappedText.length; w++) {
+        checkPageOverflow(6);
+        const subLine = wrappedText[w];
+        
+        let parts = subLine.split("**");
+        let curX = margin + 5;
+        for (let p = 0; p < parts.length; p++) {
+          const isBoldPart = p % 2 === 1;
+          doc.setFont("helvetica", isBoldPart ? "bold" : "normal");
+          doc.setTextColor(
+            isBoldPart ? 30 : 71,
+            isBoldPart ? 41 : 85,
+            isBoldPart ? 59 : 105
+          );
+          doc.text(parts[p], curX, y);
+          curX += doc.getTextWidth(parts[p]);
+        }
+        y += 6;
+      }
+    } else {
+      // Paragraph
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      doc.setTextColor(71, 85, 105);
+      
+      const wrappedText = doc.splitTextToSize(trimmed, maxLineWidth);
+      for (let w = 0; w < wrappedText.length; w++) {
+        checkPageOverflow(6);
+        const subLine = wrappedText[w];
+        
+        let parts = subLine.split("**");
+        let curX = margin;
+        for (let p = 0; p < parts.length; p++) {
+          const isBoldPart = p % 2 === 1;
+          doc.setFont("helvetica", isBoldPart ? "bold" : "normal");
+          doc.setTextColor(
+            isBoldPart ? 30 : 71,
+            isBoldPart ? 41 : 85,
+            isBoldPart ? 59 : 105
+          );
+          doc.text(parts[p], curX, y);
+          curX += doc.getTextWidth(parts[p]);
+        }
+        y += 6;
+      }
+    }
+  }
+
+  // Flush remaining table
+  flushPDFTable();
+
+  // Draw footer line and text
+  checkPageOverflow(15);
+  y += 5;
+  doc.setDrawColor(226, 232, 240);
+  doc.line(margin, y, margin + maxLineWidth, y);
+  y += 6;
+  doc.setFont("helvetica", "italic");
+  doc.setFontSize(8);
+  doc.setTextColor(148, 163, 184);
+  doc.text("End of Report. Developed for UPEC Facial Biometrics Dashboard Project © 2026.", margin, y);
+
+  doc.save("FaceMetrics_Biometric_Report.pdf");
+};
+
+function DownloadReportButton({ text }) {
+  const [downloading, setDownloading] = useState(false);
+  const handleDownload = () => {
+    setDownloading(true);
+    try {
+      generatePDFReport(text);
+    } catch (err) {
+      console.error("PDF generation failed:", err);
+    } finally {
+      setDownloading(false);
+    }
+  };
+  return (
+    <button
+      onClick={handleDownload}
+      disabled={downloading}
+      className="px-3 py-1.5 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 rounded-lg text-xs text-indigo-300 transition-colors flex items-center gap-1 font-semibold cursor-pointer disabled:opacity-50"
+    >
+      <Icon name={downloading ? "sync" : "picture_as_pdf"} className={`text-xs ${downloading ? "animate-spin" : ""}`} />
+      {downloading ? "Generating PDF..." : "Download Report (PDF)"}
+    </button>
+  );
+}
+
 function renderInlineFormatting(text) {
   const regex = /(\*\*.*?\*\*|`.*?`)/g;
   const parts = text.split(regex);
@@ -77,73 +370,157 @@ function renderInlineFormatting(text) {
 
 function formatText(content) {
   if (!content) return "";
-  
-  // Check if this block is a blockquote alert
-  const trimmedContent = content.trim();
-  if (trimmedContent.startsWith("> [!")) {
-    const lines = content.split("\n");
-    const typeLine = lines[0].trim();
-    const type = typeLine.includes("WARNING") ? "warning" : "info";
-
-    const bodyLines = lines.slice(1).map((line) => {
-      let l = line.trim();
-      if (l.startsWith(">")) {
-        l = l.slice(1).trim();
-      }
-      return l;
-    });
-
-    const bodyText = bodyLines.join("\n");
-    const bgCls =
-      type === "warning"
-        ? "bg-red-500/10 border-red-500/20 text-red-200"
-        : "bg-indigo-500/10 border-indigo-500/20 text-indigo-200";
-    const icon = type === "warning" ? "warning" : "info";
-    const iconCls = type === "warning" ? "text-red-400" : "text-indigo-400";
-
-    return (
-      <div className={`p-4 rounded-xl border ${bgCls} flex gap-3 items-start my-2`}>
-        <Icon name={icon} className={`${iconCls} text-sm mt-0.5 shrink-0`} />
-        <div className="text-xs leading-relaxed flex-grow">
-          {renderInlineFormatting(bodyText)}
-        </div>
-      </div>
-    );
-  }
 
   const lines = content.split("\n");
-  const hasList = lines.some((line) => {
-    const trimmed = line.trim();
-    return trimmed.startsWith("- ") || trimmed.startsWith("* ") || /^\d+\.\s/.test(trimmed);
-  });
+  const elements = [];
+  let currentList = null;
+  let currentTable = null;
 
-  if (hasList) {
-    return (
-      <ul className="list-disc pl-5 space-y-1 my-2">
-        {lines.map((line, lidx) => {
-          const trimmed = line.trim();
-          if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
-            return (
-              <li key={lidx} className="text-on-surface">
-                {renderInlineFormatting(trimmed.slice(2))}
-              </li>
-            );
-          } else if (/^\d+\.\s/.test(trimmed)) {
-            const match = trimmed.match(/^(\d+\.\s)/);
-            const marker = match[1];
-            return (
-              <li key={lidx} className="list-decimal text-on-surface ml-5">
-                {renderInlineFormatting(trimmed.slice(marker.length))}
-              </li>
-            );
-          }
-          return <div key={lidx}>{renderInlineFormatting(line)}</div>;
-        })}
-      </ul>
-    );
+  const flushList = (key) => {
+    if (currentList) {
+      elements.push(
+        <ul key={`list-${key}`} className="list-disc pl-5 space-y-1 my-3">
+          {currentList.map((item, idx) => (
+            <li key={idx} className="text-slate-300 text-sm">
+              {renderInlineFormatting(item)}
+            </li>
+          ))}
+        </ul>
+      );
+      currentList = null;
+    }
+  };
+
+  const flushTable = (key) => {
+    if (currentTable) {
+      const headerRow = currentTable[0];
+      const isDivider = currentTable.length > 1 && currentTable[1].every(c => c.trim().startsWith("-") || c.trim() === "");
+      const bodyRows = isDivider ? currentTable.slice(2) : currentTable.slice(1);
+
+      elements.push(
+        <div key={`table-wrapper-${key}`} className="overflow-x-auto my-4 rounded-xl border border-white/10 bg-slate-950/40">
+          <table className="min-w-full divide-y divide-white/10 text-xs">
+            <thead className="bg-white/5">
+              <tr>
+                {headerRow.map((cell, idx) => (
+                  <th key={idx} className="px-4 py-2.5 text-left font-semibold text-indigo-300 uppercase tracking-wider">
+                    {renderInlineFormatting(cell.trim())}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5 text-slate-300">
+              {bodyRows.map((row, rIdx) => (
+                <tr key={rIdx} className="hover:bg-white/5 transition-colors">
+                  {row.map((cell, cIdx) => (
+                    <td key={cIdx} className="px-4 py-2 whitespace-nowrap">
+                      {renderInlineFormatting(cell.trim())}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+      currentTable = null;
+    }
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // Check if we need to flush previous structures
+    const isListLine = trimmed.startsWith("- ") || trimmed.startsWith("* ");
+    const isTableLine = trimmed.startsWith("|");
+
+    if (!isListLine) {
+      flushList(i);
+    }
+    if (!isTableLine) {
+      flushTable(i);
+    }
+
+    if (!trimmed) {
+      continue;
+    }
+
+    // Parse blockquote alerts
+    if (trimmed.startsWith("> [!")) {
+      let alertType = trimmed.includes("WARNING") ? "warning" : "info";
+      let alertLines = [];
+      while (i < lines.length && lines[i].trim().startsWith(">")) {
+        let l = lines[i].trim().slice(1).trim();
+        if (!l.startsWith("[!")) {
+          alertLines.push(l);
+        }
+        i++;
+      }
+      i--; // adjust index
+
+      const bodyText = alertLines.join("\n");
+      const bgCls = alertType === "warning" ? "bg-red-500/10 border-red-500/20 text-red-200" : "bg-indigo-500/10 border-indigo-500/20 text-indigo-200";
+      const icon = alertType === "warning" ? "warning" : "info";
+      const iconCls = alertType === "warning" ? "text-red-400" : "text-indigo-400";
+      
+      elements.push(
+        <div key={`alert-${i}`} className={`p-4 rounded-xl border ${bgCls} flex gap-3 items-start my-3`}>
+          <Icon name={icon} className={`${iconCls} text-sm mt-0.5 shrink-0`} />
+          <div className="text-xs leading-relaxed flex-grow">
+            {renderInlineFormatting(bodyText)}
+          </div>
+        </div>
+      );
+      continue;
+    }
+
+    // Headings
+    if (trimmed.startsWith("###")) {
+      elements.push(
+        <h4 key={i} className="text-xs font-bold text-indigo-400 mt-4 mb-2 uppercase tracking-wider">
+          {renderInlineFormatting(trimmed.slice(3).trim())}
+        </h4>
+      );
+    } else if (trimmed.startsWith("##")) {
+      elements.push(
+        <h3 key={i} className="text-sm font-bold text-white mt-5 mb-2.5">
+          {renderInlineFormatting(trimmed.slice(2).trim())}
+        </h3>
+      );
+    } else if (trimmed.startsWith("#")) {
+      elements.push(
+        <h2 key={i} className="text-base font-bold text-white mt-6 mb-3">
+          {renderInlineFormatting(trimmed.slice(1).trim())}
+        </h2>
+      );
+    } else if (isListLine) {
+      const content = trimmed.slice(2).trim();
+      if (!currentList) {
+        currentList = [];
+      }
+      currentList.push(content);
+    } else if (isTableLine) {
+      const cells = line.split("|").map(c => c.trim());
+      const actualCells = cells.slice(1, cells.length - 1);
+      
+      if (!currentTable) {
+        currentTable = [];
+      }
+      currentTable.push(actualCells);
+    } else {
+      elements.push(
+        <p key={i} className="text-slate-300 text-sm leading-relaxed my-2">
+          {renderInlineFormatting(line)}
+        </p>
+      );
+    }
   }
 
-  return renderInlineFormatting(content);
+  flushList(lines.length);
+  flushTable(lines.length);
+
+  return elements;
 }
 
 function MessageBubble({ msg }) {
@@ -199,6 +576,13 @@ function MessageBubble({ msg }) {
     );
   }
 
+  const msgText = msg.blocks ? msg.blocks.map((b) => b.content).join("\n") : (msg.text || "");
+  const isReport = msg.role === "ai" && msgText && (
+    msgText.toLowerCase().includes("report") ||
+    msgText.toLowerCase().includes("performance summary") ||
+    msgText.toLowerCase().includes("biometric system performance")
+  );
+
   return (
     <div className="flex gap-3 sm:gap-4 items-start max-w-4xl mx-auto">
       <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center shrink-0 shadow-lg shadow-indigo-500/20">
@@ -235,7 +619,8 @@ function MessageBubble({ msg }) {
           )}
         </div>
         <div className="flex gap-2 mt-1">
-          <CopyButton text={msg.blocks ? msg.blocks.map((b) => b.content).join("\n") : msg.text} />
+          <CopyButton text={msgText} />
+          {isReport && <DownloadReportButton text={msgText} />}
         </div>
       </div>
     </div>

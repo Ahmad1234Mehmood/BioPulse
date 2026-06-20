@@ -25,6 +25,7 @@ export default function Verify() {
   const [authenticating, setAuthenticating] = useState(false);
   const [result, setResult] = useState(null);
   const [log, setLog] = useState(INITIAL_LOG);
+  const [prevAccepted, setPrevAccepted] = useState(null);
   
   // Enrolled subjects & claims state
   const [enrolledSubjects, setEnrolledSubjects] = useState([]);
@@ -60,6 +61,32 @@ export default function Verify() {
       logRef.current.scrollTop = logRef.current.scrollHeight;
     }
   }, [log]);
+
+  useEffect(() => {
+    if (result) {
+      const isMatch = result.score >= threshold;
+      if (prevAccepted !== null && prevAccepted !== isMatch) {
+        const t = nowTime();
+        setLog((prev) => [
+          ...prev,
+          {
+            ts: t,
+            text: `Threshold adjusted to ${threshold.toFixed(2)}. Decision recalculated: ${isMatch ? "ACCEPTED" : "REJECTED"} (Score: ${(result.score * 100).toFixed(1)}%)`,
+            cls: isMatch ? "text-emerald-400/90 font-medium animate-pulse" : "text-rose-400/90 font-medium animate-pulse"
+          }
+        ]);
+        addToast(
+          isMatch
+            ? `Decision updated: ACCEPTED — similarity ${(result.score * 100).toFixed(1)}% is above threshold.`
+            : `Decision updated: REJECTED — similarity ${(result.score * 100).toFixed(1)}% is below threshold.`,
+          isMatch ? "success" : "error"
+        );
+      }
+      setPrevAccepted(isMatch);
+    } else {
+      setPrevAccepted(null);
+    }
+  }, [threshold, result]);
 
   const handleProbeFileChange = (file) => {
     if (file) {
@@ -101,7 +128,7 @@ export default function Verify() {
     ]);
 
     try {
-      const res = await verifyUser(selectedSubject || "custom_claim", probeFile, claimFile);
+      const res = await verifyUser(selectedSubject || "custom_claim", probeFile, claimFile, threshold);
       const data = res.data;
       const t1 = nowTime();
       

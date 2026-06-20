@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Icon from "../components/Icon";
 import { useApp } from "../context/AppContext";
 import { identifyUser } from "../api/services";
@@ -13,6 +13,7 @@ export default function Identify() {
   const [threshold, setThreshold] = useState(0.70);
   const [searching, setSearching] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+  const [prevMatched, setPrevMatched] = useState(null);
 
   // File state
   const [probeFile, setProbeFile] = useState(null);
@@ -53,7 +54,7 @@ export default function Identify() {
     const startTime = performance.now();
 
     try {
-      const res = await identifyUser(probeFile);
+      const res = await identifyUser(probeFile, threshold);
       const endTime = performance.now();
       setSearchLatency(Math.round(endTime - startTime));
 
@@ -75,10 +76,29 @@ export default function Identify() {
   };
 
   // Extract primary match and list matches
-  const matches = results?.matches || [];
+  const allMatches = results?.matches || [];
+  const rawPrimaryMatch = allMatches.length > 0 ? allMatches[0] : null;
+  const matches = allMatches.filter((m) => m.score >= threshold);
   const primaryMatch = matches.length > 0 ? matches[0] : null;
   const secondaryMatches = matches.slice(1);
   const matchedOverThreshold = primaryMatch && (primaryMatch.score >= threshold);
+
+  useEffect(() => {
+    if (rawPrimaryMatch) {
+      const isMatch = rawPrimaryMatch.score >= threshold;
+      if (prevMatched !== null && prevMatched !== isMatch) {
+        addToast(
+          isMatch
+            ? `Search decision updated: MATCH ACCEPTED for ${rawPrimaryMatch.subject_id.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())} (${(rawPrimaryMatch.score * 100).toFixed(1)}%)`
+            : `Search decision updated: NO MATCH (Highest candidate is below threshold)`,
+          isMatch ? "success" : "error"
+        );
+      }
+      setPrevMatched(isMatch);
+    } else {
+      setPrevMatched(null);
+    }
+  }, [threshold, rawPrimaryMatch]);
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 space-y-6 lg:space-y-8">
