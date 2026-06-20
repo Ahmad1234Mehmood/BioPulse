@@ -1,0 +1,18 @@
+{
+  "subject_id": 236,
+  "subject_name": "Liza Minnelli",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1751,
+    1832,
+    2510,
+    2567
+  ],
+  "probe_indices": [
+    4569,
+    5857,
+    5912
+  ]
+}

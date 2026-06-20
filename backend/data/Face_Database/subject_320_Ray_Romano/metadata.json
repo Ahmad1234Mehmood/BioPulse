@@ -1,0 +1,20 @@
+{
+  "subject_id": 320,
+  "subject_name": "Ray Romano",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1461,
+    1730,
+    2283,
+    2676,
+    2700,
+    2850
+  ],
+  "probe_indices": [
+    2884,
+    2917,
+    4992
+  ]
+}

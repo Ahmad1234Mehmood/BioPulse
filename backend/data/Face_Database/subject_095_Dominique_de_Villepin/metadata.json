@@ -1,0 +1,26 @@
+{
+  "subject_id": 95,
+  "subject_name": "Dominique de Villepin",
+  "total_images": 15,
+  "enrollment_count": 10,
+  "probe_count": 5,
+  "enrollment_indices": [
+    537,
+    645,
+    1176,
+    1285,
+    2441,
+    2564,
+    2691,
+    3077,
+    3557,
+    3902
+  ],
+  "probe_indices": [
+    3949,
+    4191,
+    4471,
+    4704,
+    5650
+  ]
+}

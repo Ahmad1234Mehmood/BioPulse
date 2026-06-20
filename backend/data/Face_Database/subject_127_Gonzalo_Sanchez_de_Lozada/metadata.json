@@ -1,0 +1,23 @@
+{
+  "subject_id": 127,
+  "subject_name": "Gonzalo Sanchez de Lozada",
+  "total_images": 12,
+  "enrollment_count": 8,
+  "probe_count": 4,
+  "enrollment_indices": [
+    193,
+    202,
+    1591,
+    1927,
+    1940,
+    1978,
+    2882,
+    2939
+  ],
+  "probe_indices": [
+    3061,
+    3102,
+    4338,
+    5509
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "subject_id": 152,
+  "subject_name": "Igor Ivanov",
+  "total_images": 20,
+  "enrollment_count": 14,
+  "probe_count": 6,
+  "enrollment_indices": [
+    450,
+    578,
+    610,
+    781,
+    1636,
+    1797,
+    1891,
+    2395,
+    2495,
+    3098,
+    3117,
+    3216,
+    3385,
+    3394
+  ],
+  "probe_indices": [
+    3974,
+    4067,
+    4231,
+    4593,
+    4958,
+    5014
+  ]
+}

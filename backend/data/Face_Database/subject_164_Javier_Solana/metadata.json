@@ -1,0 +1,21 @@
+{
+  "subject_id": 164,
+  "subject_name": "Javier Solana",
+  "total_images": 10,
+  "enrollment_count": 7,
+  "probe_count": 3,
+  "enrollment_indices": [
+    415,
+    488,
+    543,
+    550,
+    2149,
+    2483,
+    3344
+  ],
+  "probe_indices": [
+    3904,
+    5220,
+    5496
+  ]
+}

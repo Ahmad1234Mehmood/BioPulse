@@ -1,0 +1,22 @@
+{
+  "subject_id": 23,
+  "subject_name": "Ann Veneman",
+  "total_images": 11,
+  "enrollment_count": 7,
+  "probe_count": 4,
+  "enrollment_indices": [
+    623,
+    834,
+    932,
+    1059,
+    1259,
+    1459,
+    2107
+  ],
+  "probe_indices": [
+    2980,
+    4458,
+    4486,
+    4841
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "subject_id": 42,
+  "subject_name": "Bill Graham",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    179,
+    844,
+    1408,
+    2210,
+    2819,
+    3223
+  ],
+  "probe_indices": [
+    4225,
+    5529,
+    5582
+  ]
+}

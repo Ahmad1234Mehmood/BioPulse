@@ -1,0 +1,18 @@
+{
+  "subject_id": 192,
+  "subject_name": "John Manley",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    3217,
+    3381,
+    3783,
+    4772
+  ],
+  "probe_indices": [
+    4924,
+    5112,
+    5218
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "subject_id": 9,
+  "subject_name": "Albert Costa",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    827,
+    1068,
+    1515,
+    1745
+  ],
+  "probe_indices": [
+    2879,
+    5110
+  ]
+}

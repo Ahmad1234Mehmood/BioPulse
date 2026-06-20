@@ -1,0 +1,39 @@
+{
+  "subject_id": 206,
+  "subject_name": "Juan Carlos Ferrero",
+  "total_images": 28,
+  "enrollment_count": 19,
+  "probe_count": 9,
+  "enrollment_indices": [
+    319,
+    351,
+    682,
+    816,
+    1299,
+    1357,
+    1380,
+    1672,
+    2243,
+    2656,
+    2914,
+    3174,
+    3573,
+    3755,
+    4236,
+    4429,
+    4797,
+    4824,
+    4828
+  ],
+  "probe_indices": [
+    4911,
+    5092,
+    5432,
+    5445,
+    5669,
+    5787,
+    5799,
+    5915,
+    5973
+  ]
+}

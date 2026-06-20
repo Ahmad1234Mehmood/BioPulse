@@ -1,0 +1,17 @@
+{
+  "subject_id": 82,
+  "subject_name": "Costas Simitis",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    258,
+    1218,
+    1407,
+    2218
+  ],
+  "probe_indices": [
+    4963,
+    5023
+  ]
+}

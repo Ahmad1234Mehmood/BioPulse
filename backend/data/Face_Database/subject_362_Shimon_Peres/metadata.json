@@ -1,0 +1,19 @@
+{
+  "subject_id": 362,
+  "subject_name": "Shimon Peres",
+  "total_images": 8,
+  "enrollment_count": 5,
+  "probe_count": 3,
+  "enrollment_indices": [
+    850,
+    1674,
+    2806,
+    3190,
+    3767
+  ],
+  "probe_indices": [
+    5030,
+    5518,
+    5981
+  ]
+}

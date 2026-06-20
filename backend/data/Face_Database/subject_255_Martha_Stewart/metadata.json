@@ -1,0 +1,16 @@
+{
+  "subject_id": 255,
+  "subject_name": "Martha Stewart",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1125,
+    1499,
+    1792
+  ],
+  "probe_indices": [
+    3881,
+    5532
+  ]
+}

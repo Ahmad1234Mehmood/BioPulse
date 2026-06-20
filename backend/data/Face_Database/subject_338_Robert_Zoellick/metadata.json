@@ -1,0 +1,18 @@
+{
+  "subject_id": 338,
+  "subject_name": "Robert Zoellick",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    210,
+    1536,
+    2319,
+    2807
+  ],
+  "probe_indices": [
+    2862,
+    3044,
+    4856
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject_id": 21,
+  "subject_name": "Angela Merkel",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    187,
+    435,
+    3818
+  ],
+  "probe_indices": [
+    5039,
+    5728
+  ]
+}

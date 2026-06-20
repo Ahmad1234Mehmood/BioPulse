@@ -1,0 +1,16 @@
+{
+  "subject_id": 399,
+  "subject_name": "Vanessa Redgrave",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    4098,
+    4340,
+    4688
+  ],
+  "probe_indices": [
+    5558,
+    5638
+  ]
+}

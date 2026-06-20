@@ -1,0 +1,16 @@
+{
+  "subject_id": 88,
+  "subject_name": "David Trimble",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    475,
+    1126,
+    2815
+  ],
+  "probe_indices": [
+    4645,
+    5962
+  ]
+}

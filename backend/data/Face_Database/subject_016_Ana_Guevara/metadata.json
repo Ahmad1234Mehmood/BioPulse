@@ -1,0 +1,18 @@
+{
+  "subject_id": 16,
+  "subject_name": "Ana Guevara",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1258,
+    1986,
+    2022,
+    2817
+  ],
+  "probe_indices": [
+    3359,
+    5634,
+    5949
+  ]
+}

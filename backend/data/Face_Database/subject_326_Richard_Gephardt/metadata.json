@@ -1,0 +1,22 @@
+{
+  "subject_id": 326,
+  "subject_name": "Richard Gephardt",
+  "total_images": 11,
+  "enrollment_count": 7,
+  "probe_count": 4,
+  "enrollment_indices": [
+    1381,
+    1762,
+    2195,
+    3507,
+    3788,
+    4149,
+    4461
+  ],
+  "probe_indices": [
+    4872,
+    4933,
+    5248,
+    5280
+  ]
+}

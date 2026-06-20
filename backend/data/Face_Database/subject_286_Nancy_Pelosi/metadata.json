@@ -1,0 +1,26 @@
+{
+  "subject_id": 286,
+  "subject_name": "Nancy Pelosi",
+  "total_images": 15,
+  "enrollment_count": 10,
+  "probe_count": 5,
+  "enrollment_indices": [
+    706,
+    887,
+    1219,
+    1294,
+    1718,
+    1838,
+    2017,
+    2384,
+    2491,
+    3753
+  ],
+  "probe_indices": [
+    4073,
+    4259,
+    4311,
+    4609,
+    5418
+  ]
+}

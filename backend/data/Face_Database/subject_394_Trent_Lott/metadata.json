@@ -1,0 +1,27 @@
+{
+  "subject_id": 394,
+  "subject_name": "Trent Lott",
+  "total_images": 16,
+  "enrollment_count": 11,
+  "probe_count": 5,
+  "enrollment_indices": [
+    107,
+    267,
+    484,
+    882,
+    1485,
+    1559,
+    1603,
+    1633,
+    2254,
+    2418,
+    2680
+  ],
+  "probe_indices": [
+    4029,
+    4451,
+    4542,
+    4878,
+    5909
+  ]
+}

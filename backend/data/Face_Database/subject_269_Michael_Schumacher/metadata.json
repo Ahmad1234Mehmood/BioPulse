@@ -1,0 +1,29 @@
+{
+  "subject_id": 269,
+  "subject_name": "Michael Schumacher",
+  "total_images": 18,
+  "enrollment_count": 12,
+  "probe_count": 6,
+  "enrollment_indices": [
+    334,
+    806,
+    1314,
+    1836,
+    2054,
+    2112,
+    2216,
+    2560,
+    2874,
+    3002,
+    3189,
+    3222
+  ],
+  "probe_indices": [
+    3993,
+    4776,
+    4888,
+    4945,
+    5054,
+    5764
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject_id": 408,
+  "subject_name": "Wayne Ferreira",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    808,
+    1288,
+    2108
+  ],
+  "probe_indices": [
+    3365,
+    5684
+  ]
+}

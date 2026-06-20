@@ -1,0 +1,22 @@
+{
+  "subject_id": 358,
+  "subject_name": "Sergey Lavrov",
+  "total_images": 11,
+  "enrollment_count": 7,
+  "probe_count": 4,
+  "enrollment_indices": [
+    877,
+    1107,
+    1247,
+    1503,
+    2207,
+    2744,
+    2776
+  ],
+  "probe_indices": [
+    2995,
+    3125,
+    3191,
+    4484
+  ]
+}

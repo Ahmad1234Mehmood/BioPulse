@@ -1,0 +1,18 @@
+{
+  "subject_id": 371,
+  "subject_name": "Steven Spielberg",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1807,
+    2956,
+    3460,
+    3778
+  ],
+  "probe_indices": [
+    4106,
+    5040,
+    5838
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject_id": 75,
+  "subject_name": "Claudia Pechstein",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1241,
+    1346,
+    1782
+  ],
+  "probe_indices": [
+    2929,
+    3221
+  ]
+}

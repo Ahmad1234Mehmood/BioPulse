@@ -1,0 +1,17 @@
+{
+  "subject_id": 352,
+  "subject_name": "Sarah Jessica Parker",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    330,
+    864,
+    1291,
+    1387
+  ],
+  "probe_indices": [
+    2132,
+    5438
+  ]
+}

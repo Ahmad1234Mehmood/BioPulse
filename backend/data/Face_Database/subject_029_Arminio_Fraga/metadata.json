@@ -1,0 +1,17 @@
+{
+  "subject_id": 29,
+  "subject_name": "Arminio Fraga",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    262,
+    730,
+    1549,
+    1567
+  ],
+  "probe_indices": [
+    2467,
+    5450
+  ]
+}

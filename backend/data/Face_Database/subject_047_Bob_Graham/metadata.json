@@ -1,0 +1,17 @@
+{
+  "subject_id": 47,
+  "subject_name": "Bob Graham",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    3,
+    67,
+    117,
+    826
+  ],
+  "probe_indices": [
+    1620,
+    5727
+  ]
+}

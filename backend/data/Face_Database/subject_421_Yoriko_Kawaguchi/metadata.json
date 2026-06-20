@@ -1,0 +1,25 @@
+{
+  "subject_id": 421,
+  "subject_name": "Yoriko Kawaguchi",
+  "total_images": 14,
+  "enrollment_count": 9,
+  "probe_count": 5,
+  "enrollment_indices": [
+    136,
+    1493,
+    2181,
+    2417,
+    3731,
+    3968,
+    4001,
+    4322,
+    4388
+  ],
+  "probe_indices": [
+    4517,
+    4881,
+    5630,
+    5653,
+    5672
+  ]
+}

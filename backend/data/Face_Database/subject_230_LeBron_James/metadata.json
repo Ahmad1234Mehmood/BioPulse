@@ -1,0 +1,16 @@
+{
+  "subject_id": 230,
+  "subject_name": "LeBron James",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1817,
+    1869,
+    2666
+  ],
+  "probe_indices": [
+    2830,
+    3206
+  ]
+}

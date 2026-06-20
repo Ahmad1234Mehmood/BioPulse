@@ -1,0 +1,17 @@
+{
+  "subject_id": 54,
+  "subject_name": "Calista Flockhart",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    600,
+    1361,
+    2302,
+    2659
+  ],
+  "probe_indices": [
+    5234,
+    5446
+  ]
+}

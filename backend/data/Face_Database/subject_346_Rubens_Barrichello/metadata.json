@@ -1,0 +1,23 @@
+{
+  "subject_id": 346,
+  "subject_name": "Rubens Barrichello",
+  "total_images": 12,
+  "enrollment_count": 8,
+  "probe_count": 4,
+  "enrollment_indices": [
+    160,
+    1037,
+    1579,
+    1855,
+    1990,
+    2888,
+    3793,
+    4131
+  ],
+  "probe_indices": [
+    4165,
+    4369,
+    4705,
+    5535
+  ]
+}

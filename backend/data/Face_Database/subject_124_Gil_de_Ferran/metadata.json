@@ -1,0 +1,16 @@
+{
+  "subject_id": 124,
+  "subject_name": "Gil de Ferran",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    927,
+    929,
+    3085
+  ],
+  "probe_indices": [
+    3180,
+    3509
+  ]
+}

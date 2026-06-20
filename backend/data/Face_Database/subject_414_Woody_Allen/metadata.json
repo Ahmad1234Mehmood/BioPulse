@@ -1,0 +1,16 @@
+{
+  "subject_id": 414,
+  "subject_name": "Woody Allen",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    839,
+    2601,
+    3392
+  ],
+  "probe_indices": [
+    4323,
+    5560
+  ]
+}

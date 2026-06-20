@@ -1,0 +1,22 @@
+{
+  "subject_id": 186,
+  "subject_name": "John Allen Muhammad",
+  "total_images": 11,
+  "enrollment_count": 7,
+  "probe_count": 4,
+  "enrollment_indices": [
+    94,
+    156,
+    1504,
+    1964,
+    2379,
+    2758,
+    4434
+  ],
+  "probe_indices": [
+    4551,
+    4800,
+    5835,
+    5921
+  ]
+}

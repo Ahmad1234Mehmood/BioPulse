@@ -1,0 +1,18 @@
+{
+  "subject_id": 297,
+  "subject_name": "Oscar De La Hoya",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    2629,
+    3830,
+    4592,
+    4649
+  ],
+  "probe_indices": [
+    5594,
+    5711,
+    5763
+  ]
+}

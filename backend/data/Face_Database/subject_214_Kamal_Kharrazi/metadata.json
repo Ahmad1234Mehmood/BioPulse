@@ -1,0 +1,17 @@
+{
+  "subject_id": 214,
+  "subject_name": "Kamal Kharrazi",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    147,
+    937,
+    1206,
+    1455
+  ],
+  "probe_indices": [
+    4264,
+    4791
+  ]
+}

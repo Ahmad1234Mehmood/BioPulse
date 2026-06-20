@@ -1,0 +1,16 @@
+{
+  "subject_id": 60,
+  "subject_name": "Carrie-Anne Moss",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1076,
+    1747,
+    3321
+  ],
+  "probe_indices": [
+    4628,
+    5551
+  ]
+}

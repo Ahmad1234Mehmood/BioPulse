@@ -1,0 +1,23 @@
+{
+  "subject_id": 266,
+  "subject_name": "Michael Jackson",
+  "total_images": 12,
+  "enrollment_count": 8,
+  "probe_count": 4,
+  "enrollment_indices": [
+    233,
+    1179,
+    1676,
+    1957,
+    2412,
+    2646,
+    3995,
+    4692
+  ],
+  "probe_indices": [
+    4718,
+    5170,
+    5360,
+    5844
+  ]
+}

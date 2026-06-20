@@ -1,0 +1,17 @@
+{
+  "subject_id": 113,
+  "subject_name": "Fujio Cho",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    391,
+    1876,
+    2413,
+    2803
+  ],
+  "probe_indices": [
+    3368,
+    5104
+  ]
+}

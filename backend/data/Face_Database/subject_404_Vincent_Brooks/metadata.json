@@ -1,0 +1,18 @@
+{
+  "subject_id": 404,
+  "subject_name": "Vincent Brooks",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    105,
+    1197,
+    3303,
+    3483
+  ],
+  "probe_indices": [
+    3757,
+    4676,
+    5421
+  ]
+}

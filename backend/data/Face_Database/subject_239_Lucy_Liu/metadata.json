@@ -1,0 +1,16 @@
+{
+  "subject_id": 239,
+  "subject_name": "Lucy Liu",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    2916,
+    3183,
+    3832
+  ],
+  "probe_indices": [
+    4475,
+    5162
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject_id": 83,
+  "subject_name": "Cruz Bustamante",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1172,
+    2338,
+    3380
+  ],
+  "probe_indices": [
+    3948,
+    5441
+  ]
+}

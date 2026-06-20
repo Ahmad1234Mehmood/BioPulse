@@ -1,0 +1,18 @@
+{
+  "subject_id": 6,
+  "subject_name": "Al Sharpton",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1627,
+    2419,
+    4008,
+    4095
+  ],
+  "probe_indices": [
+    4567,
+    4826,
+    5140
+  ]
+}

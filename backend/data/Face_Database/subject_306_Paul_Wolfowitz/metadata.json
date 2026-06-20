@@ -1,0 +1,21 @@
+{
+  "subject_id": 306,
+  "subject_name": "Paul Wolfowitz",
+  "total_images": 10,
+  "enrollment_count": 7,
+  "probe_count": 3,
+  "enrollment_indices": [
+    284,
+    982,
+    1135,
+    1181,
+    1273,
+    1616,
+    2367
+  ],
+  "probe_indices": [
+    4379,
+    5121,
+    5536
+  ]
+}

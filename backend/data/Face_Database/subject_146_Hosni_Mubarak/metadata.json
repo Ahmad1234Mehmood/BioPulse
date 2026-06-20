@@ -1,0 +1,20 @@
+{
+  "subject_id": 146,
+  "subject_name": "Hosni Mubarak",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1946,
+    1959,
+    2894,
+    3533,
+    4448,
+    4454
+  ],
+  "probe_indices": [
+    4478,
+    5288,
+    5750
+  ]
+}

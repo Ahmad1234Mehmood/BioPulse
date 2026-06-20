@@ -1,0 +1,22 @@
+{
+  "subject_id": 359,
+  "subject_name": "Sergio Vieira De Mello",
+  "total_images": 11,
+  "enrollment_count": 7,
+  "probe_count": 4,
+  "enrollment_indices": [
+    142,
+    182,
+    899,
+    992,
+    1143,
+    1873,
+    2163
+  ],
+  "probe_indices": [
+    3042,
+    3643,
+    5019,
+    5400
+  ]
+}

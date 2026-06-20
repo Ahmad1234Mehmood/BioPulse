@@ -1,0 +1,18 @@
+{
+  "subject_id": 193,
+  "subject_name": "John McCain",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    502,
+    1737,
+    1948,
+    2685
+  ],
+  "probe_indices": [
+    2779,
+    5134,
+    5324
+  ]
+}

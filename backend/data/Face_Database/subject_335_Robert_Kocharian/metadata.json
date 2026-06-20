@@ -1,0 +1,16 @@
+{
+  "subject_id": 335,
+  "subject_name": "Robert Kocharian",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1880,
+    2630,
+    3258
+  ],
+  "probe_indices": [
+    3751,
+    5895
+  ]
+}

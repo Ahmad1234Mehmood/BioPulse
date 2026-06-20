@@ -1,0 +1,17 @@
+{
+  "subject_id": 423,
+  "subject_name": "Zinedine Zidane",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    490,
+    552,
+    2153,
+    2847
+  ],
+  "probe_indices": [
+    2865,
+    5020
+  ]
+}

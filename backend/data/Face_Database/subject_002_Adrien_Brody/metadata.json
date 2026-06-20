@@ -1,0 +1,23 @@
+{
+  "subject_id": 2,
+  "subject_name": "Adrien Brody",
+  "total_images": 12,
+  "enrollment_count": 8,
+  "probe_count": 4,
+  "enrollment_indices": [
+    120,
+    788,
+    1136,
+    1317,
+    1850,
+    2245,
+    2481,
+    3433
+  ],
+  "probe_indices": [
+    4101,
+    4242,
+    4453,
+    4462
+  ]
+}

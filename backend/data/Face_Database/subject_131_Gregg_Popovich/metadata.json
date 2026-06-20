@@ -1,0 +1,16 @@
+{
+  "subject_id": 131,
+  "subject_name": "Gregg Popovich",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1250,
+    2323,
+    2977
+  ],
+  "probe_indices": [
+    3500,
+    4691
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "subject_id": 313,
+  "subject_name": "Pierce Brosnan",
+  "total_images": 15,
+  "enrollment_count": 10,
+  "probe_count": 5,
+  "enrollment_indices": [
+    2,
+    200,
+    707,
+    949,
+    1062,
+    1078,
+    1296,
+    1403,
+    2385,
+    3640
+  ],
+  "probe_indices": [
+    3733,
+    4894,
+    5053,
+    5790,
+    5946
+  ]
+}

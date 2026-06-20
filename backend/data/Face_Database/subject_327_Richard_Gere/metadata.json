@@ -1,0 +1,21 @@
+{
+  "subject_id": 327,
+  "subject_name": "Richard Gere",
+  "total_images": 10,
+  "enrollment_count": 7,
+  "probe_count": 3,
+  "enrollment_indices": [
+    278,
+    1042,
+    1266,
+    2416,
+    2506,
+    2654,
+    3426
+  ],
+  "probe_indices": [
+    3808,
+    5004,
+    5139
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "subject_id": 208,
+  "subject_name": "Julianne Moore",
+  "total_images": 19,
+  "enrollment_count": 13,
+  "probe_count": 6,
+  "enrollment_indices": [
+    88,
+    1185,
+    1220,
+    1360,
+    2015,
+    2247,
+    2615,
+    2935,
+    3235,
+    3247,
+    3265,
+    3291,
+    3318
+  ],
+  "probe_indices": [
+    3619,
+    3823,
+    4171,
+    4903,
+    5025,
+    5365
+  ]
+}

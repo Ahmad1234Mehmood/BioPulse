@@ -1,0 +1,18 @@
+{
+  "subject_id": 343,
+  "subject_name": "Romano Prodi",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    486,
+    1786,
+    1950,
+    3404
+  ],
+  "probe_indices": [
+    3685,
+    5274,
+    5428
+  ]
+}

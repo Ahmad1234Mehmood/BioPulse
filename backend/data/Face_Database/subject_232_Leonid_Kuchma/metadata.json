@@ -1,0 +1,17 @@
+{
+  "subject_id": 232,
+  "subject_name": "Leonid Kuchma",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    841,
+    1814,
+    2256,
+    2868
+  ],
+  "probe_indices": [
+    4906,
+    5901
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject_id": 293,
+  "subject_name": "Nick Nolte",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1767,
+    2881,
+    3956
+  ],
+  "probe_indices": [
+    4918,
+    5503
+  ]
+}

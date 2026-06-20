@@ -1,0 +1,18 @@
+{
+  "subject_id": 308,
+  "subject_name": "Pedro Almodovar",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    428,
+    3073,
+    3322,
+    4000
+  ],
+  "probe_indices": [
+    4154,
+    5489,
+    5868
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "subject_id": 328,
+  "subject_name": "Richard Myers",
+  "total_images": 18,
+  "enrollment_count": 12,
+  "probe_count": 6,
+  "enrollment_indices": [
+    10,
+    40,
+    549,
+    906,
+    1341,
+    1971,
+    1997,
+    2005,
+    2072,
+    2234,
+    2284,
+    2590
+  ],
+  "probe_indices": [
+    3335,
+    3856,
+    3896,
+    4436,
+    4717,
+    5291
+  ]
+}

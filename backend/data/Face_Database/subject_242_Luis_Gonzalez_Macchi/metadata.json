@@ -1,0 +1,16 @@
+{
+  "subject_id": 242,
+  "subject_name": "Luis Gonzalez Macchi",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    32,
+    91,
+    3158
+  ],
+  "probe_indices": [
+    3517,
+    4711
+  ]
+}

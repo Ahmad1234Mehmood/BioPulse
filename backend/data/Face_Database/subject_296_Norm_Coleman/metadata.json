@@ -1,0 +1,18 @@
+{
+  "subject_id": 296,
+  "subject_name": "Norm Coleman",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1720,
+    2617,
+    3046,
+    5408
+  ],
+  "probe_indices": [
+    5422,
+    5852,
+    5854
+  ]
+}

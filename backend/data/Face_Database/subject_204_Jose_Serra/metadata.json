@@ -1,0 +1,20 @@
+{
+  "subject_id": 204,
+  "subject_name": "Jose Serra",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1453,
+    2370,
+    2430,
+    2571,
+    3037,
+    3467
+  ],
+  "probe_indices": [
+    4308,
+    4765,
+    4863
+  ]
+}

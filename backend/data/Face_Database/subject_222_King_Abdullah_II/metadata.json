@@ -1,0 +1,16 @@
+{
+  "subject_id": 222,
+  "subject_name": "King Abdullah II",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    880,
+    1384,
+    3364
+  ],
+  "probe_indices": [
+    4301,
+    4681
+  ]
+}

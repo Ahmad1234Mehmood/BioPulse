@@ -1,0 +1,28 @@
+{
+  "subject_id": 196,
+  "subject_name": "John Snow",
+  "total_images": 17,
+  "enrollment_count": 11,
+  "probe_count": 6,
+  "enrollment_indices": [
+    181,
+    639,
+    727,
+    1038,
+    1270,
+    1488,
+    2730,
+    2834,
+    3017,
+    3188,
+    4124
+  ],
+  "probe_indices": [
+    4395,
+    4832,
+    5124,
+    5448,
+    5534,
+    5903
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "subject_id": 59,
+  "subject_name": "Carmen Electra",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    479,
+    1128,
+    1383,
+    1457
+  ],
+  "probe_indices": [
+    4126,
+    5393
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject_id": 368,
+  "subject_name": "Steffi Graf",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    249,
+    1429,
+    3161
+  ],
+  "probe_indices": [
+    4869,
+    5317
+  ]
+}

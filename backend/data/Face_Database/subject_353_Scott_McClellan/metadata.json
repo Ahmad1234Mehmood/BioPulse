@@ -1,0 +1,16 @@
+{
+  "subject_id": 353,
+  "subject_name": "Scott McClellan",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1430,
+    1630,
+    1796
+  ],
+  "probe_indices": [
+    3549,
+    4622
+  ]
+}

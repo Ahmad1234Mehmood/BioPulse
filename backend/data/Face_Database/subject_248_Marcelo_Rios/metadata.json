@@ -1,0 +1,16 @@
+{
+  "subject_id": 248,
+  "subject_name": "Marcelo Rios",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    2065,
+    3112,
+    4238
+  ],
+  "probe_indices": [
+    4425,
+    5021
+  ]
+}

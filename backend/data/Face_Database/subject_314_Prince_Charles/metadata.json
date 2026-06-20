@@ -1,0 +1,16 @@
+{
+  "subject_id": 314,
+  "subject_name": "Prince Charles",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    197,
+    604,
+    1402
+  ],
+  "probe_indices": [
+    2705,
+    3506
+  ]
+}

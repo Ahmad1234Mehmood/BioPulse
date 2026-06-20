@@ -1,0 +1,22 @@
+{
+  "subject_id": 160,
+  "subject_name": "James Kelly",
+  "total_images": 11,
+  "enrollment_count": 7,
+  "probe_count": 4,
+  "enrollment_indices": [
+    78,
+    356,
+    1899,
+    1999,
+    2312,
+    2343,
+    3842
+  ],
+  "probe_indices": [
+    5307,
+    5414,
+    5442,
+    5847
+  ]
+}

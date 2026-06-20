@@ -1,0 +1,16 @@
+{
+  "subject_id": 272,
+  "subject_name": "Mick Jagger",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    952,
+    2925,
+    3109
+  ],
+  "probe_indices": [
+    4799,
+    4861
+  ]
+}

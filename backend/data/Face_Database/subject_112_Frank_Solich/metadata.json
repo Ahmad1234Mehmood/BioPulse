@@ -1,0 +1,16 @@
+{
+  "subject_id": 112,
+  "subject_name": "Frank Solich",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    393,
+    879,
+    1040
+  ],
+  "probe_indices": [
+    3712,
+    5849
+  ]
+}

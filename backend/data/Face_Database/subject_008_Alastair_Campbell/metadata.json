@@ -1,0 +1,16 @@
+{
+  "subject_id": 8,
+  "subject_name": "Alastair Campbell",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    374,
+    532,
+    1365
+  ],
+  "probe_indices": [
+    1679,
+    5887
+  ]
+}

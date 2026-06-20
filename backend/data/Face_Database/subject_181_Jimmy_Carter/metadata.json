@@ -1,0 +1,20 @@
+{
+  "subject_id": 181,
+  "subject_name": "Jimmy Carter",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    65,
+    705,
+    1592,
+    2070,
+    2308,
+    2420
+  ],
+  "probe_indices": [
+    2951,
+    5719,
+    5869
+  ]
+}

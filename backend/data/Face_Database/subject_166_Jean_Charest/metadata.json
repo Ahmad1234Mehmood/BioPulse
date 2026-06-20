@@ -1,0 +1,28 @@
+{
+  "subject_id": 166,
+  "subject_name": "Jean Charest",
+  "total_images": 17,
+  "enrollment_count": 11,
+  "probe_count": 6,
+  "enrollment_indices": [
+    454,
+    504,
+    1209,
+    1316,
+    1882,
+    1960,
+    2131,
+    2353,
+    2545,
+    2797,
+    3249
+  ],
+  "probe_indices": [
+    3983,
+    4358,
+    4721,
+    4904,
+    4953,
+    5541
+  ]
+}

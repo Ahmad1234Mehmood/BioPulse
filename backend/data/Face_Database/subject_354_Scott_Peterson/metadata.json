@@ -1,0 +1,16 @@
+{
+  "subject_id": 354,
+  "subject_name": "Scott Peterson",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    1610,
+    2539,
+    3294
+  ],
+  "probe_indices": [
+    3352,
+    3473
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject_id": 389,
+  "subject_name": "Tommy Franks",
+  "total_images": 16,
+  "enrollment_count": 11,
+  "probe_count": 5,
+  "enrollment_indices": [
+    608,
+    1589,
+    2103,
+    2517,
+    2761,
+    2859,
+    2931,
+    3005,
+    3198,
+    3252,
+    3349
+  ],
+  "probe_indices": [
+    3552,
+    3595,
+    5272,
+    5815,
+    5927
+  ]
+}

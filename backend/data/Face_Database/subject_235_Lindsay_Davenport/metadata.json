@@ -1,0 +1,33 @@
+{
+  "subject_id": 235,
+  "subject_name": "Lindsay Davenport",
+  "total_images": 22,
+  "enrollment_count": 15,
+  "probe_count": 7,
+  "enrollment_indices": [
+    314,
+    325,
+    361,
+    533,
+    801,
+    845,
+    873,
+    881,
+    951,
+    1213,
+    1252,
+    1465,
+    2614,
+    2649,
+    2714
+  ],
+  "probe_indices": [
+    2777,
+    3296,
+    3784,
+    3957,
+    4198,
+    5184,
+    5186
+  ]
+}

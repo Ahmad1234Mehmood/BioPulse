@@ -1,0 +1,20 @@
+{
+  "subject_id": 305,
+  "subject_name": "Paul ONeill",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    328,
+    616,
+    1780,
+    2100,
+    2376,
+    2500
+  ],
+  "probe_indices": [
+    4617,
+    5137,
+    5255
+  ]
+}

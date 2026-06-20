@@ -1,0 +1,16 @@
+{
+  "subject_id": 197,
+  "subject_name": "John Stockton",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    12,
+    2958,
+    3867
+  ],
+  "probe_indices": [
+    3954,
+    5663
+  ]
+}

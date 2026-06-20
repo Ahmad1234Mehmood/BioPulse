@@ -1,0 +1,19 @@
+{
+  "subject_id": 250,
+  "subject_name": "Maria Shriver",
+  "total_images": 8,
+  "enrollment_count": 5,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1658,
+    2528,
+    2550,
+    2551,
+    2632
+  ],
+  "probe_indices": [
+    2841,
+    3905,
+    4525
+  ]
+}

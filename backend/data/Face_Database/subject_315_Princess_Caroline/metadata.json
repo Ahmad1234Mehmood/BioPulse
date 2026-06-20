@@ -1,0 +1,16 @@
+{
+  "subject_id": 315,
+  "subject_name": "Princess Caroline",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    686,
+    4134,
+    4151
+  ],
+  "probe_indices": [
+    4989,
+    5215
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "subject_id": 238,
+  "subject_name": "Lucio Gutierrez",
+  "total_images": 13,
+  "enrollment_count": 9,
+  "probe_count": 4,
+  "enrollment_indices": [
+    675,
+    1551,
+    1858,
+    1931,
+    2512,
+    2627,
+    3004,
+    3127,
+    3458
+  ],
+  "probe_indices": [
+    4290,
+    4400,
+    4684,
+    5940
+  ]
+}

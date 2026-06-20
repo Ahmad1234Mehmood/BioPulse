@@ -1,0 +1,26 @@
+{
+  "subject_id": 261,
+  "subject_name": "Meryl Streep",
+  "total_images": 15,
+  "enrollment_count": 10,
+  "probe_count": 5,
+  "enrollment_indices": [
+    868,
+    1229,
+    1647,
+    2709,
+    2768,
+    3447,
+    4533,
+    4539,
+    5150,
+    5185
+  ],
+  "probe_indices": [
+    5292,
+    5357,
+    5434,
+    5564,
+    5585
+  ]
+}

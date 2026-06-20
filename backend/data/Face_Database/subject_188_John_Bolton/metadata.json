@@ -1,0 +1,28 @@
+{
+  "subject_id": 188,
+  "subject_name": "John Bolton",
+  "total_images": 17,
+  "enrollment_count": 11,
+  "probe_count": 6,
+  "enrollment_indices": [
+    165,
+    666,
+    883,
+    2372,
+    2389,
+    2466,
+    3801,
+    3978,
+    4012,
+    4152,
+    4155
+  ],
+  "probe_indices": [
+    4246,
+    4397,
+    4644,
+    4951,
+    5405,
+    5742
+  ]
+}

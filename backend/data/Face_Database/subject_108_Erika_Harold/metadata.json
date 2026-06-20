@@ -1,0 +1,16 @@
+{
+  "subject_id": 108,
+  "subject_name": "Erika Harold",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    2285,
+    2845,
+    3655
+  ],
+  "probe_indices": [
+    4072,
+    5703
+  ]
+}

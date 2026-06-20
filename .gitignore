@@ -1,4 +1,30 @@
+<<<<<<< HEAD
 node_modules
 dist
 *.local
 .DS_Store
+=======
+# Root-level files
+node_modules/
+dist/
+package-lock.json
+
+# Backend dependencies/caches
+backend/__pycache__/
+backend/venv/
+backend/.env
+backend/.env.local
+backend/appData/
+
+# Frontend dependencies/builds
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# General ignores
+.DS_Store
+.idea/
+.vscode/
+*.log
+>>>>>>> facemetrics-update

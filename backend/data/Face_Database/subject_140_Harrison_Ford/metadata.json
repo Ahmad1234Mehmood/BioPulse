@@ -1,0 +1,23 @@
+{
+  "subject_id": 140,
+  "subject_name": "Harrison Ford",
+  "total_images": 12,
+  "enrollment_count": 8,
+  "probe_count": 4,
+  "enrollment_indices": [
+    123,
+    303,
+    376,
+    958,
+    1085,
+    1147,
+    2408,
+    2727
+  ],
+  "probe_indices": [
+    3432,
+    4625,
+    5602,
+    5867
+  ]
+}

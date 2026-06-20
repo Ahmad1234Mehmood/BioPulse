@@ -1,0 +1,29 @@
+{
+  "subject_id": 226,
+  "subject_name": "Lance Armstrong",
+  "total_images": 18,
+  "enrollment_count": 12,
+  "probe_count": 6,
+  "enrollment_indices": [
+    6,
+    524,
+    976,
+    1010,
+    2273,
+    2342,
+    2771,
+    2976,
+    3211,
+    3742,
+    3840,
+    4140
+  ],
+  "probe_indices": [
+    4269,
+    4672,
+    5035,
+    5351,
+    5377,
+    5721
+  ]
+}

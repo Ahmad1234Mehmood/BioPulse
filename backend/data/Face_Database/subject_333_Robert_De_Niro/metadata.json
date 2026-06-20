@@ -1,0 +1,17 @@
+{
+  "subject_id": 333,
+  "subject_name": "Robert De Niro",
+  "total_images": 6,
+  "enrollment_count": 4,
+  "probe_count": 2,
+  "enrollment_indices": [
+    62,
+    803,
+    1663,
+    3485
+  ],
+  "probe_indices": [
+    4700,
+    5870
+  ]
+}

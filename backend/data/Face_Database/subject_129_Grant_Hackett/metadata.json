@@ -1,0 +1,16 @@
+{
+  "subject_id": 129,
+  "subject_name": "Grant Hackett",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    424,
+    862,
+    933
+  ],
+  "probe_indices": [
+    3138,
+    4192
+  ]
+}

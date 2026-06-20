@@ -1,0 +1,30 @@
+{
+  "subject_id": 294,
+  "subject_name": "Nicole Kidman",
+  "total_images": 19,
+  "enrollment_count": 13,
+  "probe_count": 6,
+  "enrollment_indices": [
+    271,
+    306,
+    528,
+    1158,
+    1177,
+    1687,
+    2041,
+    2200,
+    3479,
+    3610,
+    3845,
+    3998,
+    4321
+  ],
+  "probe_indices": [
+    4639,
+    4710,
+    5178,
+    5270,
+    5301,
+    5562
+  ]
+}

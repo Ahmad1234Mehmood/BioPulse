@@ -1,0 +1,18 @@
+{
+  "subject_id": 304,
+  "subject_name": "Paul McCartney",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    261,
+    2140,
+    3284,
+    3933
+  ],
+  "probe_indices": [
+    3981,
+    4789,
+    5670
+  ]
+}

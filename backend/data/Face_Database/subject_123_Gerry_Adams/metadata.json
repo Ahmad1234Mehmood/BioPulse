@@ -1,0 +1,19 @@
+{
+  "subject_id": 123,
+  "subject_name": "Gerry Adams",
+  "total_images": 8,
+  "enrollment_count": 5,
+  "probe_count": 3,
+  "enrollment_indices": [
+    1716,
+    3674,
+    4015,
+    4055,
+    4866
+  ],
+  "probe_indices": [
+    4965,
+    5649,
+    5695
+  ]
+}

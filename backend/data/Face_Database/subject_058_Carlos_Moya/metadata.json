@@ -1,0 +1,30 @@
+{
+  "subject_id": 58,
+  "subject_name": "Carlos Moya",
+  "total_images": 19,
+  "enrollment_count": 13,
+  "probe_count": 6,
+  "enrollment_indices": [
+    201,
+    1034,
+    1057,
+    1070,
+    1422,
+    1709,
+    1920,
+    2805,
+    2849,
+    4014,
+    4096,
+    4335,
+    4566
+  ],
+  "probe_indices": [
+    4849,
+    5057,
+    5243,
+    5359,
+    5415,
+    5449
+  ]
+}

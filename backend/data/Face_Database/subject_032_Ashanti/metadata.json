@@ -1,0 +1,16 @@
+{
+  "subject_id": 32,
+  "subject_name": "Ashanti",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    420,
+    1947,
+    3641
+  ],
+  "probe_indices": [
+    5070,
+    5977
+  ]
+}

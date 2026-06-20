@@ -1,0 +1,18 @@
+{
+  "subject_id": 257,
+  "subject_name": "Martin Scorsese",
+  "total_images": 7,
+  "enrollment_count": 4,
+  "probe_count": 3,
+  "enrollment_indices": [
+    42,
+    290,
+    765,
+    1734
+  ],
+  "probe_indices": [
+    2306,
+    3752,
+    3921
+  ]
+}

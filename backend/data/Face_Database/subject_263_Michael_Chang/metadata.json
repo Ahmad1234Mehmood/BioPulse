@@ -1,0 +1,19 @@
+{
+  "subject_id": 263,
+  "subject_name": "Michael Chang",
+  "total_images": 8,
+  "enrollment_count": 5,
+  "probe_count": 3,
+  "enrollment_indices": [
+    738,
+    928,
+    1545,
+    1644,
+    3873
+  ],
+  "probe_indices": [
+    4383,
+    5069,
+    5419
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "subject_id": 70,
+  "subject_name": "Choi Sung-hong",
+  "total_images": 5,
+  "enrollment_count": 3,
+  "probe_count": 2,
+  "enrollment_indices": [
+    92,
+    471,
+    4620
+  ],
+  "probe_indices": [
+    4932,
+    5656
+  ]
+}

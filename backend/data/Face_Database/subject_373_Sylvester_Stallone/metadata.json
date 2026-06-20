@@ -1,0 +1,20 @@
+{
+  "subject_id": 373,
+  "subject_name": "Sylvester Stallone",
+  "total_images": 9,
+  "enrollment_count": 6,
+  "probe_count": 3,
+  "enrollment_indices": [
+    644,
+    863,
+    2203,
+    2320,
+    3837,
+    4519
+  ],
+  "probe_indices": [
+    4950,
+    5287,
+    5385
+  ]
+}
