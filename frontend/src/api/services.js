@@ -35,13 +35,14 @@ export const deleteSubject = (subjectId) => {
 };
 
 // Verification
-export const verifyUser = (claimedSubjectId, probeImage, claimImage = null) => {
+export const verifyUser = (claimedSubjectId, probeImage, claimImage = null, threshold = 0.70) => {
   const formData = new FormData();
   formData.append('claimed_subject_id', claimedSubjectId);
   formData.append('probe_image', probeImage);
   if (claimImage) {
     formData.append('claim_image', claimImage);
   }
+  formData.append('threshold', threshold);
   
   return apiClient.post('/api/v1/verification/verify', formData, {
     headers: {
@@ -51,9 +52,10 @@ export const verifyUser = (claimedSubjectId, probeImage, claimImage = null) => {
 };
 
 // Identification
-export const identifyUser = (probeImage) => {
+export const identifyUser = (probeImage, threshold = 0.70) => {
   const formData = new FormData();
   formData.append('probe_image', probeImage);
+  formData.append('threshold', threshold);
   
   return apiClient.post('/api/v1/identification/identify', formData, {
     headers: {
@@ -87,8 +89,8 @@ export const getDatasetStats = () => {
   return apiClient.get('/api/v1/metrics/dataset-stats');
 };
 
-export const runMetricsEvaluation = () => {
-  return apiClient.get('/api/v1/metrics/run');
+export const runMetricsEvaluation = (force = false) => {
+  return apiClient.get(`/api/v1/metrics/run?force=${force}`);
 };
 
 export const runRotationRobustness = () => {

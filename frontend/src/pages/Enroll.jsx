@@ -223,18 +223,14 @@ export default function Enroll() {
               </div>
 
               {/* Capture buttons */}
-              <div className="grid grid-cols-2 gap-4">
+              <div>
                 <button
                   onClick={() => { fileInputRef.current?.click(); }}
-                  className="flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-700 border border-white/5 p-4 rounded-xl transition-all group"
+                  className="w-full flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-700 border border-white/5 p-4 rounded-xl transition-all group"
                 >
                   <Icon name="photo_camera" className="text-slate-400 group-hover:text-indigo-400" />
                   <span className="text-sm font-semibold text-white">Upload File</span>
                 </button>
-                <div className="flex items-center justify-center gap-3 bg-slate-800/40 border border-white/5 p-4 rounded-xl cursor-not-allowed grayscale">
-                  <Icon name="video_camera_front" className="text-slate-600" />
-                  <span className="text-sm font-semibold text-slate-600">3D Scan</span>
-                </div>
               </div>
 
               {/* Inputs */}

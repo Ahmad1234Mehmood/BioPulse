@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import Icon from "../components/Icon";
 import { useApp } from "../context/AppContext";
 import { getMetricsSummary, runMetricsEvaluation, runRotationRobustness } from "../api/services";
@@ -39,7 +39,7 @@ export default function Metrics() {
     setRunningEval(true);
     addToast("Starting full biometric evaluation pipeline on LFW dataset...", "info");
     try {
-      const res = await runMetricsEvaluation();
+      const res = await runMetricsEvaluation(true);
       if (res.data?.data) {
         setMetrics(res.data.data);
         addToast("Biometric evaluation completed successfully!", "success");
@@ -93,9 +93,73 @@ export default function Metrics() {
     }));
   };
 
-  // Projected FAR/FRR based on local threshold slider
-  const projFar = ((1 - threshold) * (1 - threshold) * 0.8).toFixed(4);
-  const projFrr = (threshold * threshold * 1.2).toFixed(3);
+  const getSecurityLevel = (farVal) => {
+    if (farVal === 0) return { name: "Maximum Security", color: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20", icon: "security" };
+    if (farVal <= 0.001) return { name: "High Security (Banking)", color: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20", icon: "shield" };
+    if (farVal <= 0.01) return { name: "Balanced Security", color: "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20", icon: "gpp_good" };
+    if (farVal <= 0.05) return { name: "Convenience Mode", color: "bg-amber-500/10 text-amber-400 border border-amber-500/20", icon: "lock_open" };
+    return { name: "Permissive / Low Security", color: "bg-rose-500/10 text-rose-400 border border-rose-500/20", icon: "warning" };
+  };
+
+  // Get simulated metrics using real LFW evaluation data
+  const getSimulatedMetrics = () => {
+    if (!metrics?.det?.thresholds || metrics.det.thresholds.length === 0) {
+      const synFar = ((1 - threshold) * (1 - threshold) * 0.8 * 100);
+      const synFrr = (threshold * threshold * 1.2 * 100);
+      return {
+        far: synFar.toFixed(4),
+        frr: synFrr.toFixed(3),
+        rawFar: synFar / 100,
+        rawFrr: synFrr / 100,
+        isReal: false,
+        securityLevel: getSecurityLevel(synFar / 100),
+        falseAccepts: "—",
+        falseRejects: "—"
+      };
+    }
+
+    const ths = metrics.det.thresholds;
+    const fars = metrics.det.far;
+    const frrs = metrics.det.frr;
+
+    // Find closest threshold index
+    let closestIdx = 0;
+    let minDiff = Math.abs(ths[0] - threshold);
+    for (let i = 1; i < ths.length; i++) {
+      const diff = Math.abs(ths[i] - threshold);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = i;
+      }
+    }
+
+    const realFar = fars[closestIdx];
+    const realFrr = frrs[closestIdx];
+
+    const totalProbes = metrics.summary.total_probes || 757;
+    const totalEnrolled = metrics.summary.total_enrolled || 370;
+    
+    const genuineAttempts = totalProbes;
+    const impostorAttempts = totalProbes * (totalEnrolled - 1);
+
+    const estFalseRejects = Math.round(realFrr * genuineAttempts);
+    const estFalseAccepts = Math.round(realFar * impostorAttempts);
+
+    return {
+      far: (realFar * 100).toFixed(4),
+      frr: (realFrr * 100).toFixed(3),
+      rawFar: realFar,
+      rawFrr: realFrr,
+      isReal: true,
+      securityLevel: getSecurityLevel(realFar),
+      falseAccepts: estFalseAccepts,
+      falseRejects: estFalseRejects
+    };
+  };
+
+  const sim = getSimulatedMetrics();
+  const hasFalseAccepts = typeof sim.falseAccepts === 'number' && sim.falseAccepts > 0;
+  const hasFalseRejects = typeof sim.falseRejects === 'number' && sim.falseRejects > 0;
 
   const getStatusColor = (val) => {
     if (val === "COMPLETED" || val === "healthy" || val === "SUCCESS") return "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
@@ -206,6 +270,7 @@ export default function Metrics() {
                       labelFormatter={(label) => `FPR: ${label}`}
                     />
                     <Line type="monotone" dataKey="tpr" stroke="#8083ff" strokeWidth={2} dot={false} />
+                    {metrics && <ReferenceLine x={sim.rawFar} stroke="#ef4444" strokeDasharray="3 3" label={{ value: `T: ${threshold.toFixed(2)}`, fill: '#ef4444', fontSize: 10, position: 'top' }} />}
                   </LineChart>
                 </ResponsiveContainer>
               ) : (
@@ -216,52 +281,83 @@ export default function Metrics() {
             </div>
           </div>
 
-          {/* Threshold + Local Tuning */}
+          {/* Threshold + Local Tuning Column */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="glass-panel border border-white/10 rounded-2xl p-6 glow-border">
-              <h4 className="text-white font-semibold flex items-center gap-2">
-                <Icon name="tune" className="text-indigo-400" /> Dynamic Simulation
-              </h4>
-              <p className="text-xs text-slate-500 mt-2 mb-6">
-                Simulate FAR and FRR curves over threshold values.
-              </p>
-              <div className="space-y-6">
-                <div>
-                  <div className="flex justify-between mb-3">
-                    <span className="text-xs font-label-caps uppercase text-slate-400">Match Threshold</span>
-                    <span className="text-xs font-bold text-indigo-400">{threshold.toFixed(2)}</span>
+            <div className="glass-panel border border-white/10 rounded-2xl p-6 glow-border flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="text-white font-semibold flex items-center gap-2">
+                    <Icon name="tune" className="text-indigo-400" /> Dynamic Simulation
+                  </h4>
+                  <span className={`px-2 py-0.5 text-[9px] font-bold rounded-full uppercase tracking-wider ${sim.isReal ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-amber-500/10 text-amber-400 border border-amber-500/20 animate-pulse"}`}>
+                    {sim.isReal ? "LFW Telemetry" : "Synthetic"}
+                  </span>
+                </div>
+                <p className="text-xs text-slate-500 mb-5">
+                  Simulate FAR/FRR trade-offs and operational security levels.
+                </p>
+                <div className="space-y-6">
+                  {/* Security Level Indicator Badge */}
+                  <div className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border ${sim.securityLevel.color} transition-all duration-300`}>
+                    <Icon name={sim.securityLevel.icon} className="text-lg shrink-0" />
+                    <div>
+                      <div className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Security Grade</div>
+                      <div className="text-xs font-bold leading-tight mt-0.5">{sim.securityLevel.name}</div>
+                    </div>
                   </div>
-                  <input
-                    type="range"
-                    min="0.4"
-                    max="0.95"
-                    step="0.01"
-                    value={threshold}
-                    onChange={(e) => setThreshold(parseFloat(e.target.value))}
-                    className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
-                  />
-                  <div className="flex justify-between mt-2">
-                    <span className="text-[10px] text-slate-600">Conservative</span>
-                    <span className="text-[10px] text-slate-600">Aggressive</span>
+
+                  <div>
+                    <div className="flex justify-between mb-3">
+                      <span className="text-xs font-label-caps uppercase text-slate-400">Match Threshold</span>
+                      <span className="text-xs font-bold text-indigo-400">{threshold.toFixed(2)}</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0.4"
+                      max="0.95"
+                      step="0.01"
+                      value={threshold}
+                      onChange={(e) => setThreshold(parseFloat(e.target.value))}
+                      className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                    />
+                    <div className="flex justify-between mt-2">
+                      <span className="text-[10px] text-slate-600">Convenience</span>
+                      <span className="text-[10px] text-slate-600">Strict Security</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 p-4 bg-slate-950/60 rounded-xl border border-white/5 font-mono text-xs">
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-400">Simulated FAR:</span>
+                      <span className="text-emerald-400 font-bold text-sm">{sim.far}%</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-400">Simulated FRR:</span>
+                      <span className="text-amber-400 font-bold text-sm">{sim.frr}%</span>
+                    </div>
+                    <div className="border-t border-white/5 my-2 pt-2 space-y-1.5 text-[10px] text-slate-500">
+                      <div className="flex justify-between">
+                        <span>Est. False Accepts:</span>
+                        <span className={hasFalseAccepts ? "text-rose-400/80 font-semibold" : "text-slate-400"}>
+                          {sim.falseAccepts}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Est. False Rejects:</span>
+                        <span className={hasFalseRejects ? "text-amber-400/80 font-semibold" : "text-slate-400"}>
+                          {sim.falseRejects}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="space-y-2 p-3 bg-slate-950/60 rounded-lg border border-white/5 font-mono text-xs">
-                  <div className="flex justify-between">
-                    <span className="text-slate-400">Simulated FAR:</span>
-                    <span className="text-emerald-400 font-bold">{projFar}%</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-400">Simulated FRR:</span>
-                    <span className="text-amber-400 font-bold">{projFrr}%</span>
-                  </div>
-                </div>
-                <button
-                  onClick={() => addToast(`Sensitivity baseline set to ${threshold.toFixed(2)}`, "success")}
-                  className="w-full py-3 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl font-bold transition-all shadow-lg shadow-indigo-500/20 text-sm cursor-pointer"
-                >
-                  Apply Configuration
-                </button>
               </div>
+              <button
+                onClick={() => addToast(`Sensitivity baseline set to ${threshold.toFixed(2)}`, "success")}
+                className="w-full py-3 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl font-bold transition-all shadow-lg shadow-indigo-500/20 text-sm cursor-pointer mt-5"
+              >
+                Apply Configuration
+              </button>
             </div>
 
             {/* Operating Points Bento */}
@@ -318,6 +414,7 @@ export default function Metrics() {
                       labelFormatter={(label) => `FAR: ${label}`}
                     />
                     <Line type="monotone" dataKey="frr" stroke="#ef4444" strokeWidth={2} dot={false} />
+                    {metrics && <ReferenceLine x={sim.rawFar} stroke="#8083ff" strokeDasharray="3 3" label={{ value: `T: ${threshold.toFixed(2)}`, fill: '#8083ff', fontSize: 10, position: 'top' }} />}
                   </LineChart>
                 </ResponsiveContainer>
               ) : (
