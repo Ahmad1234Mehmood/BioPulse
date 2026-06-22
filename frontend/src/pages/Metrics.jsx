@@ -5,7 +5,12 @@ import { useApp } from "../context/AppContext";
 import { getMetricsSummary, runMetricsEvaluation, runRotationRobustness } from "../api/services";
 
 export default function Metrics() {
-  const { addToast } = useApp();
+  const { addToast, theme } = useApp();
+  const isLight = theme === "light";
+  const gridStroke = isLight ? "#cbd5e1" : "#1e293b";
+  const tooltipBg = isLight ? "#ffffff" : "#0f172a";
+  const tooltipBorder = isLight ? "#cbd5e1" : "#334155";
+  const tooltipLabelColor = isLight ? "#475569" : "#94a3b8";
 
   const [threshold, setThreshold] = useState(0.70);
   const [metrics, setMetrics] = useState(null);
@@ -259,12 +264,12 @@ export default function Metrics() {
               {metrics ? (
                 <ResponsiveContainer width="100%" height={280}>
                   <LineChart data={formatRocData()} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                    <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
                     <XAxis dataKey="fpr" type="number" domain={[0, 1]} stroke="#64748b" style={{ fontSize: 10 }} />
                     <YAxis dataKey="tpr" type="number" domain={[0, 1]} stroke="#64748b" style={{ fontSize: 10 }} />
                     <Tooltip
-                      contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #334155", borderRadius: 8 }}
-                      labelStyle={{ color: "#94a3b8" }}
+                      contentStyle={{ backgroundColor: tooltipBg, border: `1px solid ${tooltipBorder}`, borderRadius: 8 }}
+                      labelStyle={{ color: tooltipLabelColor }}
                       itemStyle={{ color: "#8083ff" }}
                       formatter={(value) => [`TPR: ${value.toFixed(4)}`, 'ROC Points']}
                       labelFormatter={(label) => `FPR: ${label}`}
@@ -403,12 +408,12 @@ export default function Metrics() {
               {metrics ? (
                 <ResponsiveContainer width="100%" height={200}>
                   <LineChart data={formatDetData()} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                    <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
                     <XAxis dataKey="far" type="number" stroke="#64748b" style={{ fontSize: 10 }} />
                     <YAxis dataKey="frr" type="number" stroke="#64748b" style={{ fontSize: 10 }} />
                     <Tooltip
-                      contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #334155", borderRadius: 8 }}
-                      labelStyle={{ color: "#94a3b8" }}
+                      contentStyle={{ backgroundColor: tooltipBg, border: `1px solid ${tooltipBorder}`, borderRadius: 8 }}
+                      labelStyle={{ color: tooltipLabelColor }}
                       itemStyle={{ color: "#ef4444" }}
                       formatter={(value) => [`FRR: ${value.toFixed(4)}`, 'DET Points']}
                       labelFormatter={(label) => `FAR: ${label}`}
@@ -438,12 +443,12 @@ export default function Metrics() {
               {metrics ? (
                 <ResponsiveContainer width="100%" height={200}>
                   <LineChart data={formatCmcData()} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                    <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
                     <XAxis dataKey="rank" type="number" domain={[1, 5]} ticks={[1,2,3,4,5]} stroke="#64748b" style={{ fontSize: 10 }} />
                     <YAxis dataKey="rate" type="number" domain={[0.8, 1]} stroke="#64748b" style={{ fontSize: 10 }} />
                     <Tooltip
-                      contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #334155", borderRadius: 8 }}
-                      labelStyle={{ color: "#94a3b8" }}
+                      contentStyle={{ backgroundColor: tooltipBg, border: `1px solid ${tooltipBorder}`, borderRadius: 8 }}
+                      labelStyle={{ color: tooltipLabelColor }}
                       itemStyle={{ color: "#10b981" }}
                       formatter={(value) => [`Rate: ${(value * 100).toFixed(2)}%`, 'Identification Rate']}
                       labelFormatter={(label) => `Rank: ${label}`}
