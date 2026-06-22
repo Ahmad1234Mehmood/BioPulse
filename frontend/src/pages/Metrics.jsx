@@ -250,7 +250,7 @@ export default function Metrics() {
         {/* Charts bento */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* ROC */}
-          <div className="lg:col-span-8 glass-panel border border-white/10 rounded-2xl overflow-hidden flex flex-col min-h-[400px]">
+          <div className="lg:col-span-8 glass-panel border border-white/10 rounded-2xl overflow-hidden flex flex-col" style={{ minHeight: 440 }}>
             <div className="p-6 border-b border-white/5 flex items-center justify-between bg-slate-900/50">
               <div>
                 <h4 className="text-white font-semibold">ROC Curve Analysis</h4>
@@ -260,10 +260,10 @@ export default function Metrics() {
                 <span className="px-2 py-1 rounded bg-indigo-500/10 text-indigo-400 text-[10px] font-bold uppercase">Biometric Standard</span>
               </div>
             </div>
-            <div className="flex-grow p-4 flex flex-col justify-center bg-slate-950/20 relative min-h-[300px]">
+            <div className="flex-grow p-4 bg-slate-950/20 relative" style={{ minHeight: 0 }}>
               {metrics ? (
-                <ResponsiveContainer width="100%" height={280}>
-                  <LineChart data={formatRocData()} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={formatRocData()} margin={{ top: 44, right: 24, left: -16, bottom: 8 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
                     <XAxis dataKey="fpr" type="number" domain={[0, 1]} stroke="#64748b" style={{ fontSize: 10 }} />
                     <YAxis dataKey="tpr" type="number" domain={[0, 1]} stroke="#64748b" style={{ fontSize: 10 }} />
@@ -275,11 +275,11 @@ export default function Metrics() {
                       labelFormatter={(label) => `FPR: ${label}`}
                     />
                     <Line type="monotone" dataKey="tpr" stroke="#8083ff" strokeWidth={2} dot={false} />
-                    {metrics && <ReferenceLine x={sim.rawFar} stroke="#ef4444" strokeDasharray="3 3" label={{ value: `T: ${threshold.toFixed(2)}`, fill: '#ef4444', fontSize: 10, position: 'top' }} />}
+                    {metrics && <ReferenceLine x={sim.rawFar} stroke="#ef4444" strokeDasharray="3 3" label={{ value: `T: ${threshold.toFixed(2)}`, fill: '#ef4444', fontSize: 10, position: 'insideTopLeft' }} />}
                   </LineChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="text-center text-slate-600 text-sm py-20 chart-grid h-full rounded-2xl">
+                <div className="flex items-center justify-center h-full text-center text-slate-600 text-sm chart-grid rounded-2xl" style={{ minHeight: 280 }}>
                   Run Full Evaluation to plot dynamic ROC curve.
                 </div>
               )}
@@ -396,18 +396,18 @@ export default function Metrics() {
           </div>
 
           {/* DET */}
-          <div className="lg:col-span-6 glass-panel border border-white/10 rounded-2xl p-6 min-h-[300px] flex flex-col justify-between">
-            <div className="flex items-center justify-between mb-4">
+          <div className="lg:col-span-6 glass-panel border border-white/10 rounded-2xl p-6 min-h-[320px] flex flex-col">
+            <div className="flex items-center justify-between mb-4 shrink-0">
               <div>
                 <h4 className="text-white font-semibold">DET Curve</h4>
                 <p className="text-[11px] text-slate-500">False Rejection Rate (FRR) vs False Acceptance Rate (FAR)</p>
               </div>
               <Icon name="info" className="text-slate-500 text-sm cursor-help" />
             </div>
-            <div className="flex-grow flex flex-col justify-center bg-slate-950/20 min-h-[220px]">
+            <div className="flex-grow bg-slate-950/20 rounded-xl" style={{ minHeight: 0 }}>
               {metrics ? (
-                <ResponsiveContainer width="100%" height={200}>
-                  <LineChart data={formatDetData()} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={formatDetData()} margin={{ top: 44, right: 24, left: -16, bottom: 8 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
                     <XAxis dataKey="far" type="number" stroke="#64748b" style={{ fontSize: 10 }} />
                     <YAxis dataKey="frr" type="number" stroke="#64748b" style={{ fontSize: 10 }} />
@@ -419,11 +419,11 @@ export default function Metrics() {
                       labelFormatter={(label) => `FAR: ${label}`}
                     />
                     <Line type="monotone" dataKey="frr" stroke="#ef4444" strokeWidth={2} dot={false} />
-                    {metrics && <ReferenceLine x={sim.rawFar} stroke="#8083ff" strokeDasharray="3 3" label={{ value: `T: ${threshold.toFixed(2)}`, fill: '#8083ff', fontSize: 10, position: 'top' }} />}
+                    {metrics && <ReferenceLine x={sim.rawFar} stroke="#8083ff" strokeDasharray="3 3" label={{ value: `T: ${threshold.toFixed(2)}`, fill: '#8083ff', fontSize: 10, position: 'insideTopLeft' }} />}
                   </LineChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="text-center text-slate-600 text-xs py-16 chart-grid">
+                <div className="flex items-center justify-center h-full text-center text-slate-600 text-xs chart-grid rounded-xl" style={{ minHeight: 200 }}>
                   DET Curve plots matching trade-offs.
                 </div>
               )}
@@ -431,18 +431,18 @@ export default function Metrics() {
           </div>
 
           {/* CMC */}
-          <div className="lg:col-span-6 glass-panel border border-white/10 rounded-2xl p-6 min-h-[300px] flex flex-col justify-between">
-            <div className="flex items-center justify-between mb-4">
+          <div className="lg:col-span-6 glass-panel border border-white/10 rounded-2xl p-6 min-h-[320px] flex flex-col">
+            <div className="flex items-center justify-between mb-4 shrink-0">
               <div>
                 <h4 className="text-white font-semibold">CMC Curve (1:N)</h4>
                 <p className="text-[11px] text-slate-500">Identification Rate vs Rank Number</p>
               </div>
               <Icon name="info" className="text-slate-500 text-sm cursor-help" />
             </div>
-            <div className="flex-grow flex flex-col justify-center bg-slate-950/20 min-h-[220px]">
+            <div className="flex-grow bg-slate-950/20 rounded-xl" style={{ minHeight: 0 }}>
               {metrics ? (
-                <ResponsiveContainer width="100%" height={200}>
-                  <LineChart data={formatCmcData()} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={formatCmcData()} margin={{ top: 44, right: 24, left: -16, bottom: 8 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
                     <XAxis dataKey="rank" type="number" domain={[1, 5]} ticks={[1,2,3,4,5]} stroke="#64748b" style={{ fontSize: 10 }} />
                     <YAxis dataKey="rate" type="number" domain={[0.8, 1]} stroke="#64748b" style={{ fontSize: 10 }} />
@@ -457,7 +457,7 @@ export default function Metrics() {
                   </LineChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="text-center text-slate-600 text-xs py-16 chart-grid">
+                <div className="flex items-center justify-center h-full text-center text-slate-600 text-xs chart-grid rounded-xl" style={{ minHeight: 200 }}>
                   CMC plots Rank-N cumulative identification success.
                 </div>
               )}
