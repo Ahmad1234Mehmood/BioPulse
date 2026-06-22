@@ -36,7 +36,7 @@ const INITIAL_NOTIFS = [
 ];
 
 export default function TopBar({ onMenu }) {
-  const { addToast } = useApp();
+  const { addToast, theme, toggleTheme } = useApp();
 
   // Notifications
   const [showNotifs, setShowNotifs] = useState(false);
@@ -44,10 +44,16 @@ export default function TopBar({ onMenu }) {
   const notifsRef = useRef(null);
   const unread = notifs.filter((n) => !n.read).length;
 
+  // Settings & Theme
+  const [showSettings, setShowSettings] = useState(false);
+  const settingsRef = useRef(null);
+
   useEffect(() => {
     const close = (e) => {
       if (notifsRef.current && !notifsRef.current.contains(e.target))
         setShowNotifs(false);
+      if (settingsRef.current && !settingsRef.current.contains(e.target))
+        setShowSettings(false);
     };
     document.addEventListener("mousedown", close);
     return () => document.removeEventListener("mousedown", close);
@@ -80,7 +86,7 @@ export default function TopBar({ onMenu }) {
           <div className="relative" ref={notifsRef}>
             <button
               onClick={() => setShowNotifs((v) => !v)}
-              className="relative text-slate-400 hover:text-indigo-400 transition-colors"
+              className="relative text-slate-400 hover:text-indigo-400 transition-colors flex items-center"
               aria-label="Notifications"
             >
               <Icon name="notifications" className="text-[20px]" />
@@ -123,6 +129,55 @@ export default function TopBar({ onMenu }) {
                       )}
                     </div>
                   ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Settings / Theme Switcher */}
+          <div className="relative" ref={settingsRef}>
+            <button
+              onClick={() => setShowSettings((v) => !v)}
+              className="relative text-slate-400 hover:text-indigo-400 transition-colors flex items-center"
+              aria-label="Settings"
+            >
+              <Icon name="settings" className="text-[20px]" />
+            </button>
+
+            {showSettings && (
+              <div className="absolute top-full right-0 mt-3 w-48 bg-slate-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50">
+                <div className="px-4 py-3 border-b border-white/5">
+                  <span className="text-xs font-bold text-white">Settings</span>
+                </div>
+                <div className="p-2 space-y-1">
+                  <button
+                    onClick={() => {
+                      toggleTheme("light");
+                      setShowSettings(false);
+                    }}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium transition-colors ${
+                      theme === "light"
+                        ? "bg-indigo-500/10 text-indigo-400 font-semibold"
+                        : "text-slate-400 hover:bg-white/5 hover:text-slate-100"
+                    }`}
+                  >
+                    <Icon name="light_mode" className="text-sm" />
+                    <span>Light Mode</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      toggleTheme("dark");
+                      setShowSettings(false);
+                    }}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium transition-colors ${
+                      theme === "dark"
+                        ? "bg-indigo-500/10 text-indigo-400 font-semibold"
+                        : "text-slate-400 hover:bg-white/5 hover:text-slate-100"
+                    }`}
+                  >
+                    <Icon name="dark_mode" className="text-sm" />
+                    <span>Dark Mode</span>
+                  </button>
                 </div>
               </div>
             )}
