@@ -1,4 +1,4 @@
 """
-Facial Biometrics System Backend
-Master's Semester Project
+Facial Biometrics System (FaceMetrics-AI) Backend
+Our Master's Semester Project
 """

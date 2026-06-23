@@ -286,31 +286,49 @@ body.drawer-open {
 
 /* Overriding hardcoded dark-mode background colors */
 .light .bg-slate-950 {
-  background-color: #f1f5f9 !important; /* slate-100 */
+  background-color: #f8fafc !important; /* slate-50 */
+}
+.light .bg-slate-950\/20 {
+  background-color: rgba(99, 102, 241, 0.02) !important; /* ultra-soft indigo-tinted background for plot canvas */
+}
+.light .bg-slate-950\/30 {
+  background-color: rgba(15, 23, 42, 0.02) !important;
+}
+.light .bg-slate-950\/40 {
+  background-color: rgba(15, 23, 42, 0.025) !important; /* light dynamic result blocks */
+}
+.light .bg-slate-950\/60 {
+  background-color: rgba(15, 23, 42, 0.04) !important;
 }
 .light .bg-slate-950\/80 {
   background-color: rgba(255, 255, 255, 0.85) !important;
 }
+.light .bg-slate-950\/50 {
+  background-color: rgba(15, 23, 42, 0.025) !important; /* light code snippet boxes / bar backgrounds */
+}
 .light .bg-slate-900 {
   background-color: #ffffff !important;
 }
+.light .bg-slate-900\/40 {
+  background-color: rgba(15, 23, 42, 0.015) !important; /* light insights sidebar rail background */
+}
 .light .bg-slate-900\/50 {
-  background-color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(15, 23, 42, 0.015) !important; /* light container header */
 }
 .light .bg-slate-900\/95 {
   background-color: rgba(255, 255, 255, 0.95) !important;
 }
 .light .bg-slate-800 {
-  background-color: #f1f5f9 !important; /* slate-100 */
+  background-color: #f8fafc !important;
 }
-.light .bg-slate-950\/30 {
-  background-color: rgba(15, 23, 42, 0.03) !important;
+.light .bg-slate-800\/40 {
+  background-color: rgba(15, 23, 42, 0.035) !important; /* light quick action pills */
 }
 .light .bg-white\/5 {
-  background-color: rgba(15, 23, 42, 0.04) !important;
+  background-color: rgba(15, 23, 42, 0.03) !important;
 }
 .light .bg-white\/10 {
-  background-color: rgba(15, 23, 42, 0.08) !important;
+  background-color: rgba(15, 23, 42, 0.06) !important;
 }
 .light .bg-white\/80 {
   background-color: rgba(255, 255, 255, 0.9) !important;

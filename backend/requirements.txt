@@ -1,7 +1,7 @@
 # --- PyTorch (CPU only, free-tier server compatible) ---
 torch==2.2.2
 torchvision==0.17.2
-# torchaudio removed — not needed for face recognition
+# torchaudio 
 
 # --- Face Processing ---
 facenet-pytorch==2.6.0
