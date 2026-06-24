@@ -42,9 +42,12 @@ export default function Metrics() {
 
   const handleRunEvaluation = async () => {
     setRunningEval(true);
-    addToast("Starting full biometric evaluation pipeline on LFW dataset...", "info");
+    addToast(
+      "Starting full biometric evaluation pipeline with face detection...",
+      "info"
+    );
     try {
-      const res = await runMetricsEvaluation(true);
+      const res = await runMetricsEvaluation(true, false);
       if (res.data?.data) {
         setMetrics(res.data.data);
         addToast("Biometric evaluation completed successfully!", "success");
@@ -176,18 +179,20 @@ export default function Metrics() {
       <div className="max-w-7xl mx-auto space-y-6 lg:space-y-8">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
           <div>
             <span className="text-indigo-400 font-label-caps text-[11px] uppercase tracking-widest font-bold">
               Model Performance Overview
             </span>
-            <h2 className="text-white font-h2 text-h2 mt-1">Biometric Metrics Engine</h2>
+            <div className="flex flex-wrap items-center gap-3 mt-1">
+              <h2 className="text-white font-h2 text-h2">Biometric Metrics Engine</h2>
+            </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
             <button
               onClick={handleRunEvaluation}
               disabled={runningEval}
-              className="bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white font-bold py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-500/20 transition-all flex items-center gap-2 text-sm cursor-pointer"
+              className="bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white font-bold py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-500/20 transition-all flex items-center justify-center gap-2 text-sm cursor-pointer"
             >
               {runningEval ? (
                 <>
@@ -275,7 +280,7 @@ export default function Metrics() {
                       labelFormatter={(label) => `FPR: ${label}`}
                     />
                     <Line type="monotone" dataKey="tpr" stroke="#8083ff" strokeWidth={2} dot={false} />
-                    {metrics && <ReferenceLine x={sim.rawFar} stroke="#ef4444" strokeDasharray="3 3" label={{ value: `T: ${threshold.toFixed(2)}`, fill: '#ef4444', fontSize: 10, position: 'top' }} />}
+                    {metrics && <ReferenceLine x={sim.rawFar} stroke="#ef4444" strokeDasharray="3 3" label={{ value: `T: ${threshold.toFixed(2)}`, fill: '#ef4444', fontSize: 10, position: 'insideTopRight' }} />}
                   </LineChart>
                 </ResponsiveContainer>
               ) : (
@@ -419,7 +424,7 @@ export default function Metrics() {
                       labelFormatter={(label) => `FAR: ${label}`}
                     />
                     <Line type="monotone" dataKey="frr" stroke="#ef4444" strokeWidth={2} dot={false} />
-                    {metrics && <ReferenceLine x={sim.rawFar} stroke="#8083ff" strokeDasharray="3 3" label={{ value: `T: ${threshold.toFixed(2)}`, fill: '#8083ff', fontSize: 10, position: 'top' }} />}
+                    {metrics && <ReferenceLine x={sim.rawFar} stroke="#8083ff" strokeDasharray="3 3" label={{ value: `T: ${threshold.toFixed(2)}`, fill: '#8083ff', fontSize: 10, position: 'insideTopRight' }} />}
                   </LineChart>
                 </ResponsiveContainer>
               ) : (
@@ -476,12 +481,14 @@ export default function Metrics() {
               <div className="bg-slate-950/40 p-4 rounded-xl border border-white/5 text-center flex flex-col justify-center">
                 <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Cosine Similarity (Normalized)</span>
                 <div className="text-2xl font-black text-indigo-400 mt-2">EER: {(metrics.metric_comparison.cosine.eer * 100).toFixed(2)}%</div>
-                <span className="text-[10px] text-slate-500 mt-1">AUC: {metrics.metric_comparison.cosine.roc_auc.toFixed(4)}</span>
+                <div className="text-xs text-indigo-300/80 mt-1">EER Threshold: {metrics.metric_comparison.cosine.eer_threshold.toFixed(4)}</div>
+                <span className="text-[10px] text-slate-500 mt-2 font-semibold">AUC: {metrics.metric_comparison.cosine.roc_auc.toFixed(4)}</span>
               </div>
               <div className="bg-slate-950/40 p-4 rounded-xl border border-white/5 text-center flex flex-col justify-center">
                 <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Euclidean L2 Distance</span>
                 <div className="text-2xl font-black text-slate-400 mt-2">EER: {(metrics.metric_comparison.euclidean.eer * 100).toFixed(2)}%</div>
-                <span className="text-[10px] text-slate-500 mt-1">AUC: {metrics.metric_comparison.euclidean.roc_auc.toFixed(4)}</span>
+                <div className="text-xs text-slate-400/80 mt-1">EER Threshold: {metrics.metric_comparison.euclidean.eer_threshold.toFixed(4)}</div>
+                <span className="text-[10px] text-slate-500 mt-2 font-semibold">AUC: {metrics.metric_comparison.euclidean.roc_auc.toFixed(4)}</span>
               </div>
             </div>
             <div className="p-4 rounded-xl bg-indigo-500/5 border border-indigo-500/10 text-xs flex gap-3 text-indigo-300">

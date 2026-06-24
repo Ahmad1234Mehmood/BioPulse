@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Icon from "../components/Icon";
 import { useApp } from "../context/AppContext";
-import { queryAssistant } from "../api/services";
+import { queryAssistant, getMetricsSummary } from "../api/services";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 
@@ -650,13 +650,50 @@ export default function Assistant() {
   const [messages, setMessages] = useState(INITIAL_MSGS);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [eer, setEer] = useState("1.01%");
   const [issues, setIssues] = useState([
-    { id: 1, title: "Rotation Degradation", sub: "EER degrades to 25.4% if auto-orient correction is turned OFF.", cls: "p-3 bg-red-500/5 border border-red-500/20 rounded-lg", titleCls: "text-xs font-semibold text-red-200", subCls: "text-[10px] text-red-300/60 mt-1" },
-    { id: 2, title: "Challenging Poses", sub: "LFW probe matches show higher errors on extreme head turns.", cls: "p-3 bg-surface-container/40 border border-white/5 rounded-lg", titleCls: "text-xs font-semibold text-slate-300", subCls: "text-[10px] text-slate-500 mt-1" },
+    {
+      id: 1,
+      title: "Crop Anchor Failures",
+      sub: "Low-res LFW probe crops trigger MediaPipe anchor failures, causing a baseline 6.60% Failure to Acquire (FTA) rate.",
+      cls: "p-3 bg-amber-500/5 border border-amber-500/20 rounded-lg",
+      titleCls: "text-xs font-semibold text-amber-200",
+      subCls: "text-[10px] text-amber-300/60 mt-1"
+    },
+    {
+      id: 2,
+      title: "Rotational Degradation",
+      sub: "EER degrades to 25.42% and Rank-1 falls to 34.21% if auto-orient alignment is turned OFF.",
+      cls: "p-3 bg-red-500/5 border border-red-500/20 rounded-lg",
+      titleCls: "text-xs font-semibold text-red-200",
+      subCls: "text-[10px] text-red-300/60 mt-1"
+    },
+    {
+      id: 3,
+      title: "FRR Security Tradeoff",
+      sub: "High security configuration (FAR=0.1% @ 0.77 threshold) incurs a 2.02% False Rejection Rate (FRR) penalty.",
+      cls: "p-3 bg-surface-container/40 border border-white/5 rounded-lg",
+      titleCls: "text-xs font-semibold text-slate-300",
+      subCls: "text-[10px] text-slate-500 mt-1"
+    }
   ]);
 
   const chatRef = useRef(null);
   const textareaRef = useRef(null);
+
+  useEffect(() => {
+    const fetchEer = async () => {
+      try {
+        const res = await getMetricsSummary();
+        if (res.data?.data?.eer !== undefined) {
+          setEer(`${(res.data.data.eer * 100).toFixed(2)}%`);
+        }
+      } catch (err) {
+        console.log("Could not load dynamic EER for Assistant page:", err);
+      }
+    };
+    fetchEer();
+  }, []);
 
   useEffect(() => {
     if (chatRef.current) {
@@ -815,7 +852,7 @@ export default function Assistant() {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div className="text-[10px] text-slate-500 uppercase">System EER</div>
-              <div className="text-xl font-bold text-indigo-400">0.97%</div>
+              <div className="text-xl font-bold text-indigo-400">{eer}</div>
             </div>
             <div>
               <div className="text-[10px] text-slate-500 uppercase">Avg Latency</div>

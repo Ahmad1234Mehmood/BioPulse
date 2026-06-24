@@ -398,7 +398,19 @@ class BiometricMetricsService:
         )
         auc_l2 = float(auc(fpr_l2, tpr_l2))
 
-        recommended = "cosine" if eer_cos <= eer_l2 else "euclidean"
+        if abs(eer_cos - eer_l2) < 1e-6:
+            recommended = "cosine"
+            note = (
+                f"Both metrics yield identical EER ({eer_cos * 100:.2f}%) "
+                f"and ROC-AUC ({auc_cos:.4f}) due to L2-normalized vector embeddings. "
+                f"Cosine similarity is recommended for standard angular threshold mapping."
+            )
+        else:
+            recommended = "cosine" if eer_cos < eer_l2 else "euclidean"
+            note = (
+                f"'{recommended}' metric yields lower EER "
+                f"({min(eer_cos, eer_l2) * 100:.2f}% vs {max(eer_cos, eer_l2) * 100:.2f}%)"
+            )
 
         return {
             "cosine": {
@@ -412,10 +424,7 @@ class BiometricMetricsService:
                 "roc_auc": auc_l2,
             },
             "recommended_metric": recommended,
-            "note": (
-                f"'{recommended}' metric yields lower EER "
-                f"({min(eer_cos, eer_l2):.4f} vs {max(eer_cos, eer_l2):.4f})"
-            ),
+            "note": note,
         }
 
     # =========================================================================
@@ -519,7 +528,7 @@ class BiometricMetricsService:
     # Main orchestration
     # =========================================================================
 
-    def generate_all_metrics(self) -> Dict[str, Any]:
+    def generate_all_metrics(self, bypass_detection: bool = False) -> Dict[str, Any]:
         """
         Orchestrate the full biometric evaluation pipeline.
 
@@ -529,13 +538,13 @@ class BiometricMetricsService:
         - FAR-targeted operating points               [Improvement 3]
         - Cosine vs. Euclidean metric comparison      [Improvement 4]
         """
-        logger.info("Starting biometric evaluation pipeline...")
+        logger.info(f"Starting biometric evaluation pipeline (bypass_detection={bypass_detection})...")
         enrolled_templates = self.enrollment_service.load_all_templates()
         if not enrolled_templates:
             return {"error": "No enrolled templates found. Please enroll subjects first."}
 
         exp_results = self.run_verification_experiment(
-            enrolled_templates, subject_limit=25, bypass_detection=True
+            enrolled_templates, subject_limit=25, bypass_detection=bypass_detection
         )
 
         labels = exp_results["labels"]
@@ -598,4 +607,5 @@ class BiometricMetricsService:
             "cmc": cmc_data,
             "operating_points": operating_points,        # Improvement 3
             "metric_comparison": metric_comparison,      # Improvement 4
+            "bypass_detection": bypass_detection,
         }

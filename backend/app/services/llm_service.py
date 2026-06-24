@@ -54,12 +54,12 @@ class LLMService:
                 
         # Fallback values if files are missing
         summary = metrics_data.get("summary", {
-            "eer": 0.009687,
-            "eer_threshold": 0.73084,
-            "rank_1_accuracy": 0.93527,
-            "rank_5_accuracy": 0.94848,
-            "total_enrolled": 370,
-            "total_probes": 757
+            "eer": 0.010101,
+            "eer_threshold": 0.716603,
+            "rank_1_accuracy": 0.979798,
+            "rank_5_accuracy": 1.0,
+            "total_enrolled": 423,
+            "total_probes": 99
         })
         
         dataset_name = stats_data.get("dataset_name", "Labeled Faces in the Wild (LFW)")
@@ -86,27 +86,27 @@ Dataset Statistics (Loaded dynamically from dataset_stats.json):
 - Probe Images count: {probe_count}
 
 Biometric Evaluation Performance (Loaded dynamically from metrics_out.json):
-- Equal Error Rate (EER): {summary.get('eer', 0.009687):.4%} (which is approximately 0.97%)
-- Equal Error Rate Threshold: {summary.get('eer_threshold', 0.73084):.4f} (approximately 0.73)
-- Rank-1 Identification Accuracy: {summary.get('rank_1_accuracy', 0.93527):.4%} (approx. 93.53%)
-- Rank-5 Identification Accuracy: {summary.get('rank_5_accuracy', 0.94848):.4%} (approx. 94.85%)
-- Active enrolled subjects in template gallery: {summary.get('total_enrolled', 370)}
-- Evaluated probes in experiments: {summary.get('total_probes', 757)}
+- Equal Error Rate (EER): {summary.get('eer', 0.010101):.4%} (which is approximately 1.01%)
+- Equal Error Rate Threshold: {summary.get('eer_threshold', 0.716603):.4f} (approximately 0.7166)
+- Rank-1 Identification Accuracy: {summary.get('rank_1_accuracy', 0.979798):.4%} (approx. 97.98%)
+- Rank-5 Identification Accuracy: {summary.get('rank_5_accuracy', 1.0):.4%} (approx. 100.00%)
+- Active enrolled subjects in template gallery: {summary.get('total_enrolled', 423)}
+- Evaluated probes in experiments: {summary.get('total_probes', 99)}
 
 FAR-Targeted Operating Points:
-- High-Security Operating Point: Target FAR = 0.1% (0.001) -> Achieved FRR: 1.11% @ Threshold: 0.7674
-- Medium-Security Operating Point: Target FAR = 1.0% (0.01) -> Achieved FRR: 0.14% @ Threshold: 0.7308
-- Permissive Operating Point: Target FAR = 10.0% (0.10) -> Achieved FRR: 0.14% @ Threshold: 0.6087
+- High-Security Operating Point: Target FAR = 0.1% (0.001) -> Achieved FRR: 2.02% @ Threshold: 0.7738
+- Medium-Security Operating Point: Target FAR = 1.0% (0.01) -> Achieved FRR: 2.02% @ Threshold: 0.7738
+- Permissive Operating Point: Target FAR = 10.0% (0.10) -> Achieved FRR: 0.00% @ Threshold: 0.6313
 
 Rotation Robustness Experiment Results:
-- Upright (0°) [auto_orient ON]: EER = 0.97%, Rank-1 = 93.53% (Baseline performance)
-- 90° CW / 180° / 90° CCW [auto_orient ON]: EER = 0.97%, Rank-1 = 93.53% (Perfect correction)
+- Upright (0°) [auto_orient ON]: EER = 1.01%, Rank-1 = 97.98% (Baseline performance)
+- 90° CW / 180° / 90° CCW [auto_orient ON]: EER = 1.01%, Rank-1 = 97.98% (Perfect correction)
 - 90° CW [auto_orient OFF]: EER = 25.42%, Rank-1 = 34.21% (Extremely degraded baseline. This demonstrates that FaceNet is not rotation-invariant, and highlights that the automatic orientation alignment pipeline using MediaPipe is highly critical for real-world robustness).
 
 Metric Comparison (Cosine vs. Euclidean Ablation Study):
-- Cosine Similarity EER: 0.0097, ROC-AUC: 0.9986
-- Euclidean (L2) Distance EER: 0.0384, ROC-AUC: 0.9863
-- Recommendation: Cosine Similarity yields a significantly lower EER (0.0097 vs. 0.0384) and higher AUC. Therefore, Cosine similarity is the recommended matching metric for this system.
+- Cosine Similarity EER: 0.0101, ROC-AUC: 0.9996
+- Euclidean (L2) Distance EER: 0.0101, ROC-AUC: 0.9996
+- Recommendation: Both metrics yield identical EER (1.01%) and ROC-AUC (0.9996) due to L2-normalized vector embeddings. Cosine similarity is recommended for standard angular threshold mapping.
 
 Guidelines for Answering Queries:
 1. Maintain a helpful, analytical, and academically rigorous tone suitable for a biometrics lab course.
@@ -178,9 +178,9 @@ Guidelines for Answering Queries:
         if any(k in lower for k in ["frr", "false rejection", "rejection"]):
             return (
                 "**Offline Biometric Analyst Response:**\n\n"
-                "The system's baseline Equal Error Rate (EER) is **0.97%** using Cosine similarity. "
+                "The system's baseline Equal Error Rate (EER) is **1.01%** using Cosine similarity. "
                 "The False Rejection Rate (FRR) becomes high primarily under three circumstances:\n"
-                "1. **High Thresholds**: A high similarity threshold (e.g., **0.767** for high-security mode) forces a lower FAR (0.1%) but increases FRR to **1.11%** because subtle variations in genuine matching scores are rejected.\n"
+                "1. **High Thresholds**: A high similarity threshold (e.g., **0.7738** for high-security mode) forces a lower FAR (0.1%) but increases FRR to **2.02%** because subtle variations in genuine matching scores are rejected.\n"
                 "2. **Rotational Misalignment**: Without our MediaPipe auto-orientation correction (with auto-orient OFF), the EER surges to **25.42%** and Rank-1 drops to **34.21%**, leading to massive false rejections for tilted heads.\n"
                 "3. **Lighting & Quality**: Shadows, blur, or severe pose changes reduce similarity scores below the threshold."
             )
@@ -188,18 +188,18 @@ Guidelines for Answering Queries:
             return (
                 "**Offline Biometric Analyst Response:**\n\n"
                 "Here is the dynamic biometric evaluation report based on the system experiments:\n"
-                "- **Verification Equal Error Rate (EER)**: **0.97%** at threshold **0.7308**.\n"
-                "- **Rank-1 Identification Accuracy**: **93.53%**.\n"
-                "- **Rank-5 Identification Accuracy**: **94.85%**.\n"
-                "- **Recommended Matching Metric**: **Cosine Similarity** (EER: 0.0097, ROC-AUC: 0.9986) vs Euclidean distance (EER: 0.0384, ROC-AUC: 0.9863)."
+                "- **Verification Equal Error Rate (EER)**: **1.01%** at threshold **0.7166**.\n"
+                "- **Rank-1 Identification Accuracy**: **97.98%**.\n"
+                "- **Rank-5 Identification Accuracy**: **100.00%**.\n"
+                "- **Recommended Matching Metric**: **Cosine Similarity** (EER: 1.01%, ROC-AUC: 0.9996) vs Euclidean distance (EER: 1.01%, ROC-AUC: 0.9996) which yield identical EERs due to embedding normalization."
             )
         elif any(k in lower for k in ["threshold", "optimize", "optimization"]):
             return (
                 "**Offline Biometric Analyst Response (Threshold Optimization):**\n\n"
                 "To optimize your decision threshold for verification, consider the balance between False Acceptance (FAR) and False Rejection (FRR):\n"
-                "- **Balanced / EER Point**: Set threshold to **0.73** (FAR ≈ FRR ≈ 0.97%). Recommended for standard office/convenient verification.\n"
-                "- **High-Security Mode**: Set threshold to **0.77** (FAR = 0.1%, FRR = 1.11%). Balances FAR down to NIST guidelines for secure access control.\n"
-                "- **Convenience / Permissive Mode**: Set threshold to **0.61** (FAR = 10%, FRR = 0.14%). Ideal for watchlists or high-throughput verification."
+                "- **Balanced / EER Point**: Set threshold to **0.72** (FAR ≈ FRR ≈ 1.01%). Recommended for standard office/convenient verification.\n"
+                "- **High-Security Mode**: Set threshold to **0.77** (FAR = 0.1%, FRR = 2.02%). Balances FAR down to NIST guidelines for secure access control.\n"
+                "- **Convenience / Permissive Mode**: Set threshold to **0.63** (FAR = 10%, FRR = 0%). Ideal for watchlists or high-throughput verification."
             )
         elif any(k in lower for k in ["subject", "error", "misidentif"]):
             return (
@@ -212,13 +212,13 @@ Guidelines for Answering Queries:
                 "**Offline Biometric Analyst Report:**\n\n"
                 "### Biometric System Performance Summary\n"
                 "- **Core Dataset**: Labeled Faces in the Wild (LFW)\n"
-                "- **EER**: 0.97% at Threshold 0.7308\n"
-                "- **Rank-1 Accuracy**: 93.53%\n"
-                "- **Rank-5 Accuracy**: 94.85%\n"
+                "- **EER**: 1.01% at Threshold 0.7166\n"
+                "- **Rank-1 Accuracy**: 97.98%\n"
+                "- **Rank-5 Accuracy**: 100.00%\n"
                 "- **Operating Points**:\n"
-                "  - High Security (FAR=0.1%): Threshold = 0.77, FRR = 1.11%\n"
-                "  - Medium Security (FAR=1.0%): Threshold = 0.73, FRR = 0.14%\n"
-                "  - Low Security (FAR=10.0%): Threshold = 0.61, FRR = 0.14%\n"
+                "  - High Security (FAR=0.1%): Threshold = 0.77, FRR = 2.02%\n"
+                "  - Medium Security (FAR=1.0%): Threshold = 0.77, FRR = 2.02%\n"
+                "  - Low Security (FAR=10.0%): Threshold = 0.63, FRR = 0%\n"
                 "\n"
                 "*Note: To get generative insights, please configure `GEMINI_API_KEY` in the backend `.env` file.*"
             )

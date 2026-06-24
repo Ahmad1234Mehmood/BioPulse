@@ -89,8 +89,8 @@ export const getDatasetStats = () => {
   return apiClient.get('/api/v1/metrics/dataset-stats');
 };
 
-export const runMetricsEvaluation = (force = false) => {
-  return apiClient.get(`/api/v1/metrics/run?force=${force}`);
+export const runMetricsEvaluation = (force = false, bypassDetection = false) => {
+  return apiClient.get(`/api/v1/metrics/run?force=${force}&bypass_detection=${bypassDetection}`);
 };
 
 export const runRotationRobustness = () => {

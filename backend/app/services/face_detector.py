@@ -29,27 +29,58 @@ class FaceDetector:
         Detect faces in a BGR image.
         Returns a list of dicts containing bbox and landmarks.
         """
+        h, w = image.shape[:2]
+        
+        # Apply padding if image is small/close-cropped (standard for LFW 125x94 or 250x250 crops)
+        # MediaPipe face detection is trained on full-context images and fails on tight close-up crops.
+        # Adding a replicated border of 30% dynamically resolves the missing context.
+        if w < 300 or h < 300:
+            pad_h = int(h * 0.3)
+            pad_w = int(w * 0.3)
+            padded_image = cv2.copyMakeBorder(
+                image, pad_h, pad_h, pad_w, pad_w,
+                cv2.BORDER_REPLICATE
+            )
+        else:
+            pad_h = 0
+            pad_w = 0
+            padded_image = image
+
         # MediaPipe requires RGB input
-        image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        image_rgb = cv2.cvtColor(padded_image, cv2.COLOR_BGR2RGB)
         results = self.detector.process(image_rgb)
         
         if not results.detections:
             return []
             
         faces = []
-        h, w, _ = image.shape
+        padded_h, padded_w, _ = padded_image.shape
         for detection in results.detections:
             bboxC = detection.location_data.relative_bounding_box
-            xmin = int(bboxC.xmin * w)
-            ymin = int(bboxC.ymin * h)
-            width = int(bboxC.width * w)
-            height = int(bboxC.height * h)
+            xmin_pad = int(bboxC.xmin * padded_w)
+            ymin_pad = int(bboxC.ymin * padded_h)
+            width_pad = int(bboxC.width * padded_w)
+            height_pad = int(bboxC.height * padded_h)
+            
+            # Map back to original image coordinates and clip to boundaries
+            xmin = max(0, xmin_pad - pad_w)
+            ymin = max(0, ymin_pad - pad_h)
+            xmax = min(w, xmin_pad - pad_w + width_pad)
+            ymax = min(h, ymin_pad - pad_h + height_pad)
+            
+            width = xmax - xmin
+            height = ymax - ymin
             
             # Extract landmarks: 0: Right eye, 1: Left eye, 2: Nose tip, 
             # 3: Mouth center, 4: Right ear tragion, 5: Left ear tragion
             landmarks = []
             for keypoint in detection.location_data.relative_keypoints:
-                landmarks.append((int(keypoint.x * w), int(keypoint.y * h)))
+                lx_pad = int(keypoint.x * padded_w)
+                ly_pad = int(keypoint.y * padded_h)
+                # Map back landmarks and clip to boundaries
+                lx = max(0, min(w - 1, lx_pad - pad_w))
+                ly = max(0, min(h - 1, ly_pad - pad_h))
+                landmarks.append((lx, ly))
                 
             faces.append({
                 'bbox': (xmin, ymin, width, height),

@@ -31,14 +31,14 @@ cached_metrics: Dict[str, Any] = {}
 # =============================================================================
 
 @router.get("/run")
-async def run_metrics_evaluation(force: bool = False) -> Dict[str, Any]:
+async def run_metrics_evaluation(force: bool = False, bypass_detection: bool = False) -> Dict[str, Any]:
     """
     Triggers the full biometric evaluation pipeline on the probe set.
     Computes ROC, DET, CMC, EER, FTA rate, operating points, and metric comparison.
     Results are cached until the server restarts.
     """
     global cached_metrics
-    if cached_metrics and not force:
+    if cached_metrics and not force and cached_metrics.get("bypass_detection") == bypass_detection:
         return {
             "status": "success",
             "message": "Evaluation retrieved from cache",
@@ -46,7 +46,7 @@ async def run_metrics_evaluation(force: bool = False) -> Dict[str, Any]:
         }
 
     try:
-        results = metrics_service.generate_all_metrics()
+        results = metrics_service.generate_all_metrics(bypass_detection=bypass_detection)
         if "error" in results:
             raise HTTPException(status_code=400, detail=results["error"])
         cached_metrics = results
