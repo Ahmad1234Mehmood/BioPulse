@@ -81,16 +81,21 @@ export const queryAssistant = (message, history = []) => {
 
 
 // Metrics
-export const getMetricsSummary = () => {
-  return apiClient.get('/api/v1/metrics/summary');
+export const getMetricsSummary = (subjectLimit = null) => {
+  const params = new URLSearchParams();
+  if (subjectLimit !== null) params.append('subject_limit', subjectLimit);
+  return apiClient.get(`/api/v1/metrics/summary?` + params.toString());
 };
 
 export const getDatasetStats = () => {
   return apiClient.get('/api/v1/metrics/dataset-stats');
 };
 
-export const runMetricsEvaluation = (force = false) => {
-  return apiClient.get(`/api/v1/metrics/run?force=${force}`);
+export const runMetricsEvaluation = (force = false, subjectLimit = null) => {
+  const params = new URLSearchParams();
+  params.append('force', force);
+  if (subjectLimit !== null) params.append('subject_limit', subjectLimit);
+  return apiClient.get(`/api/v1/metrics/run?` + params.toString());
 };
 
 export const runRotationRobustness = () => {

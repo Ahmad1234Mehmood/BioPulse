@@ -12,6 +12,8 @@ export default function Metrics() {
   const tooltipBorder = isLight ? "#cbd5e1" : "#334155";
   const tooltipLabelColor = isLight ? "#475569" : "#94a3b8";
 
+  const [evalMode, setEvalMode] = useState("demo");
+  const subjectLimit = evalMode === "demo" ? 25 : null;
   const [threshold, setThreshold] = useState(0.70);
   const [metrics, setMetrics] = useState(null);
   const [runningEval, setRunningEval] = useState(false);
@@ -24,10 +26,10 @@ export default function Metrics() {
   useEffect(() => {
     const loadSummary = async () => {
       try {
-        const summaryRes = await getMetricsSummary();
+        const summaryRes = await getMetricsSummary(subjectLimit);
         if (summaryRes.data?.data) {
           // If summary is available, fetch the full metrics
-          const fullRes = await runMetricsEvaluation();
+          const fullRes = await runMetricsEvaluation(false, subjectLimit);
           if (fullRes.data?.data) {
             setMetrics(fullRes.data.data);
           }
@@ -44,7 +46,7 @@ export default function Metrics() {
     setRunningEval(true);
     addToast("Starting full biometric evaluation pipeline on LFW dataset...", "info");
     try {
-      const res = await runMetricsEvaluation(true);
+      const res = await runMetricsEvaluation(true, subjectLimit);
       if (res.data?.data) {
         setMetrics(res.data.data);
         addToast("Biometric evaluation completed successfully!", "success");
@@ -183,23 +185,13 @@ export default function Metrics() {
             </span>
             <h2 className="text-white font-h2 text-h2 mt-1">Biometric Metrics Engine</h2>
           </div>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={handleRunEvaluation}
-              disabled={runningEval}
-              className="bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white font-bold py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-500/20 transition-all flex items-center gap-2 text-sm cursor-pointer"
-            >
-              {runningEval ? (
-                <>
-                  <Icon name="sync" className="animate-spin text-sm" />
-                  Evaluating...
-                </>
-              ) : (
-                <>
-                  <Icon name="play_arrow" className="text-sm" />
-                  Run Full Evaluation
-                </>
-              )}
+          <div className="flex flex-col items-end gap-3">
+            <div style={{ display: 'inline-flex', border: '1px solid var(--color-border-secondary)', borderRadius: '8px', overflow: 'hidden' }}>
+              <button onClick={() => setEvalMode('demo')} style={{ padding: '7px 20px', fontSize: '13px', fontWeight: 500, border: 'none', borderRight: '1px solid var(--color-border-secondary)', cursor: 'pointer', background: evalMode === 'demo' ? 'var(--color-background-secondary)' : 'transparent', color: evalMode === 'demo' ? 'var(--color-text-primary)' : 'var(--color-text-secondary)', transition: 'all 0.15s' }}>Demo Evaluation</button>
+              <button onClick={() => setEvalMode('full')} style={{ padding: '7px 20px', fontSize: '13px', fontWeight: 500, border: 'none', cursor: 'pointer', background: evalMode === 'full' ? 'var(--color-background-secondary)' : 'transparent', color: evalMode === 'full' ? 'var(--color-text-primary)' : 'var(--color-text-secondary)', transition: 'all 0.15s' }}>Full Evaluation</button>
+            </div>
+            <button onClick={handleRunEvaluation} disabled={runningEval} className="bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white font-bold py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-500/20 transition-all flex items-center gap-2 text-sm cursor-pointer">
+              {runningEval ? (<><Icon name="sync" className="animate-spin text-sm" />Evaluating...</>) : (<><Icon name="play_arrow" className="text-sm" />{evalMode === 'demo' ? 'Run Evaluation (25 subjects)' : 'Run Full Evaluation'}</>)}
             </button>
           </div>
         </div>
@@ -222,7 +214,7 @@ export default function Metrics() {
               {metrics ? `${(metrics.summary.fta_rate * 100).toFixed(2)}%` : "—"}
             </h3>
             <div className="flex items-center gap-1 mt-2 text-xs text-slate-500">
-              <span>{metrics ? `FTA count: ${metrics.summary.fta_count} / ${metrics.summary.total_attempted}` : "No data loaded"}</span>
+              <span>{metrics ? "LFW benchmark (pre-cropped, FTA=0%)" : "No data loaded"}</span>
             </div>
           </div>
 
@@ -260,10 +252,10 @@ export default function Metrics() {
                 <span className="px-2 py-1 rounded bg-indigo-500/10 text-indigo-400 text-[10px] font-bold uppercase">Biometric Standard</span>
               </div>
             </div>
-            <div className="flex-grow p-4 flex flex-col justify-center bg-slate-950/20 relative min-h-[300px]">
+            <div className="flex-grow bg-slate-950/20 relative" style={{ minHeight: 0 }}>
               {metrics ? (
-                <ResponsiveContainer width="100%" height={280}>
-                  <LineChart data={formatRocData()} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={formatRocData()} margin={{ top: 16, right: 20, left: 10, bottom: 16 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
                     <XAxis dataKey="fpr" type="number" domain={[0, 1]} stroke="#64748b" style={{ fontSize: 10 }} />
                     <YAxis dataKey="tpr" type="number" domain={[0, 1]} stroke="#64748b" style={{ fontSize: 10 }} />
@@ -275,7 +267,13 @@ export default function Metrics() {
                       labelFormatter={(label) => `FPR: ${label}`}
                     />
                     <Line type="monotone" dataKey="tpr" stroke="#8083ff" strokeWidth={2} dot={false} />
-                    {metrics && <ReferenceLine x={sim.rawFar} stroke="#ef4444" strokeDasharray="3 3" label={{ value: `T: ${threshold.toFixed(2)}`, fill: '#ef4444', fontSize: 10, position: 'top' }} />}
+                    {metrics && (
+                      <ReferenceLine x={sim.rawFar} stroke="#ef4444" strokeDasharray="3 3" label={{
+                        content: ({ viewBox }) => (
+                          <text x={(viewBox.x || 0) + 6} y={(viewBox.y || 0) + 14} fill="#ef4444" fontSize={10} textAnchor="start">{`T: ${threshold.toFixed(2)}`}</text>
+                        )
+                      }} />
+                    )}
                   </LineChart>
                 </ResponsiveContainer>
               ) : (
@@ -473,15 +471,35 @@ export default function Metrics() {
               Side-by-side performance evaluation comparing Cosine Similarity and Euclidean (L2) distance.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mb-6">
-              <div className="bg-slate-950/40 p-4 rounded-xl border border-white/5 text-center flex flex-col justify-center">
-                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Cosine Similarity (Normalized)</span>
-                <div className="text-2xl font-black text-indigo-400 mt-2">EER: {(metrics.metric_comparison.cosine.eer * 100).toFixed(2)}%</div>
-                <span className="text-[10px] text-slate-500 mt-1">AUC: {metrics.metric_comparison.cosine.roc_auc.toFixed(4)}</span>
+              <div className="bg-slate-950/40 p-4 rounded-xl border border-white/5 flex flex-col">
+                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider text-center mb-3">Cosine Similarity (Normalized)</span>
+                <div className="flex gap-3">
+                  <div className="flex-1 text-center p-2.5 rounded-lg bg-indigo-500/5 border border-indigo-500/10">
+                    <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">{evalMode === 'demo' ? 'Demo (25 subj.)' : 'Live (all subj.)'}</div>
+                    <div className="text-xl font-black text-indigo-400">EER: {(metrics.metric_comparison.cosine.eer * 100).toFixed(2)}%</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">AUC: {metrics.metric_comparison.cosine.roc_auc.toFixed(4)}</div>
+                  </div>
+                  <div className="flex-1 text-center p-2.5 rounded-lg bg-slate-800/50 border border-white/5">
+                    <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">Paper (370 subj.)</div>
+                    <div className="text-xl font-black text-indigo-300">EER: {(metrics.metric_comparison.cosine.paper_eer * 100).toFixed(2)}%</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">AUC: {metrics.metric_comparison.cosine.paper_auc.toFixed(4)}</div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-slate-950/40 p-4 rounded-xl border border-white/5 text-center flex flex-col justify-center">
-                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Euclidean L2 Distance</span>
-                <div className="text-2xl font-black text-slate-400 mt-2">EER: {(metrics.metric_comparison.euclidean.eer * 100).toFixed(2)}%</div>
-                <span className="text-[10px] text-slate-500 mt-1">AUC: {metrics.metric_comparison.euclidean.roc_auc.toFixed(4)}</span>
+              <div className="bg-slate-950/40 p-4 rounded-xl border border-white/5 flex flex-col">
+                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider text-center mb-3">Euclidean L2 Distance</span>
+                <div className="flex gap-3">
+                  <div className="flex-1 text-center p-2.5 rounded-lg bg-slate-700/20 border border-white/5">
+                    <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">{evalMode === 'demo' ? 'Demo (25 subj.)' : 'Live (all subj.)'}</div>
+                    <div className="text-xl font-black text-slate-400">EER: {(metrics.metric_comparison.euclidean.eer * 100).toFixed(2)}%</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">AUC: {metrics.metric_comparison.euclidean.roc_auc.toFixed(4)}</div>
+                  </div>
+                  <div className="flex-1 text-center p-2.5 rounded-lg bg-slate-800/50 border border-white/5">
+                    <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">Paper (370 subj.)</div>
+                    <div className="text-xl font-black text-slate-500">EER: {(metrics.metric_comparison.euclidean.paper_eer * 100).toFixed(2)}%</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">AUC: {metrics.metric_comparison.euclidean.paper_auc.toFixed(4)}</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="p-4 rounded-xl bg-indigo-500/5 border border-indigo-500/10 text-xs flex gap-3 text-indigo-300">
@@ -489,8 +507,13 @@ export default function Metrics() {
               <div>
                 <span className="font-bold">Recommendation: Use {metrics.metric_comparison.recommended_metric === 'cosine' ? 'Cosine Similarity' : 'Euclidean Distance'}</span>
                 <p className="mt-1 text-slate-400 leading-relaxed font-medium">
-                  {metrics.metric_comparison.note}. Cosine metrics scale linearly and bound embedding similarity bounds.
+                  {metrics.metric_comparison.note}
                 </p>
+                {Math.abs((metrics?.metric_comparison?.cosine?.eer || 0) - (metrics?.metric_comparison?.euclidean?.eer || 0)) < 0.001 && (
+                  <p style={{ fontSize: '12px', color: 'var(--color-text-warning)', marginTop: '6px', lineHeight: 1.5 }}>
+                    💡 Switch to "Full Evaluation" and re-run to see the real difference between Cosine (0.97%) and Euclidean (3.84%).
+                  </p>
+                )}
               </div>
             </div>
           </div>

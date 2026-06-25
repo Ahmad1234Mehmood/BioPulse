@@ -1,15 +1,10 @@
 """
 Metrics routes for system performance monitoring and analytics.
 Triggers evaluation pipeline and serves biometric curves (ROC, DET, CMC).
-
-New endpoints (Phase 3 improvements):
-  GET /operating-points      — FAR-targeted threshold analysis
-  GET /metric-comparison     — Cosine vs. Euclidean distance comparison
-  GET /rotation-robustness   — Rotation robustness evaluation
 """
 
 from fastapi import APIRouter, HTTPException
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 import logging
 import json
 from pathlib import Path
@@ -22,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 metrics_service = BiometricMetricsService()
 
-# Cache for the main pipeline — prevents re-running on every request
+# Cache keyed by str(subject_limit): "25" for demo, "None" for full
 cached_metrics: Dict[str, Any] = {}
 
 
@@ -31,30 +26,17 @@ cached_metrics: Dict[str, Any] = {}
 # =============================================================================
 
 @router.get("/run")
-async def run_metrics_evaluation(force: bool = False) -> Dict[str, Any]:
-    """
-    Triggers the full biometric evaluation pipeline on the probe set.
-    Computes ROC, DET, CMC, EER, FTA rate, operating points, and metric comparison.
-    Results are cached until the server restarts.
-    """
+async def run_metrics_evaluation(force: bool = False, subject_limit: Optional[int] = None) -> Dict[str, Any]:
     global cached_metrics
-    if cached_metrics and not force:
-        return {
-            "status": "success",
-            "message": "Evaluation retrieved from cache",
-            "data": cached_metrics
-        }
-
+    cache_key = str(subject_limit)
+    if cache_key in cached_metrics and not force:
+        return {"status": "success", "message": "Evaluation retrieved from cache", "data": cached_metrics[cache_key]}
     try:
-        results = metrics_service.generate_all_metrics()
+        results = metrics_service.generate_all_metrics(subject_limit=subject_limit)
         if "error" in results:
             raise HTTPException(status_code=400, detail=results["error"])
-        cached_metrics = results
-        return {
-            "status": "success",
-            "message": "Evaluation completed successfully",
-            "data": cached_metrics
-        }
+        cached_metrics[cache_key] = results
+        return {"status": "success", "message": "Evaluation completed successfully", "data": cached_metrics[cache_key]}
     except HTTPException:
         raise
     except Exception as e:
@@ -62,123 +44,80 @@ async def run_metrics_evaluation(force: bool = False) -> Dict[str, Any]:
         raise HTTPException(status_code=500, detail=f"Evaluation error: {str(e)}")
 
 
-async def _ensure_cached():
-    """Run evaluation if not yet cached."""
-    if not cached_metrics:
-        await run_metrics_evaluation()
+async def _ensure_cached(subject_limit: Optional[int] = None):
+    cache_key = str(subject_limit)
+    if cache_key not in cached_metrics:
+        await run_metrics_evaluation(subject_limit=subject_limit)
 
 
 # =============================================================================
-# Individual curve/summary endpoints (backward-compatible)
+# Individual curve/summary endpoints
 # =============================================================================
 
 @router.get("/summary")
-async def get_summary() -> Dict[str, Any]:
-    """Returns summary statistics (EER, FTA rate, Rank-N, effective Rank-1)."""
-    await _ensure_cached()
-    return {"status": "success", "data": cached_metrics["summary"]}
+async def get_summary(subject_limit: Optional[int] = None) -> Dict[str, Any]:
+    await _ensure_cached(subject_limit)
+    return {"status": "success", "data": cached_metrics[str(subject_limit)]["summary"]}
 
 
 @router.get("/roc")
-async def get_roc_curve() -> Dict[str, Any]:
-    """Returns ROC curve data (FPR, TPR, thresholds, AUC)."""
-    await _ensure_cached()
-    return {"status": "success", "data": cached_metrics["roc"]}
+async def get_roc_curve(subject_limit: Optional[int] = None) -> Dict[str, Any]:
+    await _ensure_cached(subject_limit)
+    return {"status": "success", "data": cached_metrics[str(subject_limit)]["roc"]}
 
 
 @router.get("/det")
-async def get_det_curve() -> Dict[str, Any]:
-    """Returns DET curve data (FAR, FRR, thresholds)."""
-    await _ensure_cached()
-    return {"status": "success", "data": cached_metrics["det"]}
+async def get_det_curve(subject_limit: Optional[int] = None) -> Dict[str, Any]:
+    await _ensure_cached(subject_limit)
+    return {"status": "success", "data": cached_metrics[str(subject_limit)]["det"]}
 
 
 @router.get("/cmc")
-async def get_cmc_curve() -> Dict[str, Any]:
-    """Returns CMC curve data (ranks, identification rates)."""
-    await _ensure_cached()
-    return {"status": "success", "data": cached_metrics["cmc"]}
+async def get_cmc_curve(subject_limit: Optional[int] = None) -> Dict[str, Any]:
+    await _ensure_cached(subject_limit)
+    return {"status": "success", "data": cached_metrics[str(subject_limit)]["cmc"]}
 
-
-# =============================================================================
-# New endpoints — Improvements 3, 4, 5
-# =============================================================================
 
 @router.get("/operating-points")
-async def get_operating_points() -> Dict[str, Any]:
-    """
-    [Improvement 3] Returns verification thresholds at standard FAR operating points.
-
-    Reports the threshold, actual FAR, and FRR at:
-      - FAR = 0.1%  (high-security deployment)
-      - FAR = 1.0%  (medium-security deployment)
-      - FAR = 10.0% (permissive / watchlist deployment)
-
-    Follows NIST FRVT reporting conventions.
-    """
-    await _ensure_cached()
+async def get_operating_points(subject_limit: Optional[int] = None) -> Dict[str, Any]:
+    await _ensure_cached(subject_limit)
     return {
         "status": "success",
         "description": "Threshold analysis at standard FAR operating points (NIST FRVT format)",
-        "data": cached_metrics.get("operating_points", [])
+        "data": cached_metrics[str(subject_limit)].get("operating_points", [])
     }
 
 
 @router.get("/metric-comparison")
-async def get_metric_comparison() -> Dict[str, Any]:
-    """
-    [Improvement 4] Returns side-by-side comparison of Cosine Similarity vs. Euclidean distance.
-
-    Both metrics are evaluated on the same score distributions.
-    Reports EER and ROC-AUC for each, and recommends the better metric.
-    """
-    await _ensure_cached()
+async def get_metric_comparison(subject_limit: Optional[int] = None) -> Dict[str, Any]:
+    await _ensure_cached(subject_limit)
     return {
         "status": "success",
         "description": "Cosine Similarity vs. Euclidean (L2) distance metric ablation",
-        "data": cached_metrics.get("metric_comparison", {})
+        "data": cached_metrics[str(subject_limit)].get("metric_comparison", {})
     }
 
 
 @router.get("/rotation-robustness")
 async def get_rotation_robustness() -> Dict[str, Any]:
-    """
-    [Improvement 5] Runs and returns the rotation robustness evaluation.
-
-    Tests the system under 5 conditions:
-      1. Upright (baseline) — auto_orient ON
-      2. 90° CW  — auto_orient ON  (tests correction capability)
-      3. 180°    — auto_orient ON  (tests correction capability)
-      4. 90° CCW — auto_orient ON  (tests correction capability)
-      5. 90° CW  — auto_orient OFF (degraded baseline, shows what correction fixes)
-
-    Reports FTA rate, EER, Rank-1, Rank-5, and Effective Rank-1 per condition.
-    NOTE: This is an independent heavy experiment — always runs fresh (not cached).
-    """
     try:
         enrollment_service = EnrollmentService()
         enrolled_templates = enrollment_service.load_all_templates()
         if not enrolled_templates:
             raise HTTPException(status_code=400, detail="No enrolled templates found.")
-
         results = metrics_service.run_rotation_robustness_experiment(
             enrolled_templates, subject_limit=25
         )
-        return {
-            "status": "success",
-            "data": results
-        }
+        return {"status": "success", "data": results}
     except HTTPException:
         raise
     except Exception as e:
         logger.error(f"Rotation robustness experiment failed: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Experiment error: {str(e)}")
 
+
 @router.get("/dataset-stats")
 async def get_dataset_stats() -> Dict[str, Any]:
-    """
-    Returns actual dataset stats loaded from dataset_stats.json.
-    """
     base_dir = Path(__file__).resolve().parent.parent.parent
     stats_file = base_dir / "data" / "dataset_stats.json"
     if not stats_file.exists():
