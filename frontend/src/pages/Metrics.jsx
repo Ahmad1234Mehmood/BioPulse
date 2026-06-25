@@ -475,30 +475,34 @@ export default function Metrics() {
                 <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider text-center mb-3">Cosine Similarity (Normalized)</span>
                 <div className="flex gap-3">
                   <div className="flex-1 text-center p-2.5 rounded-lg bg-indigo-500/5 border border-indigo-500/10">
-                    <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">{evalMode === 'demo' ? 'Demo (25 subj.)' : 'Live (all subj.)'}</div>
+                    <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">{evalMode === 'demo' ? 'Demo (25 subj.)' : 'Live (25 subj.)'}</div>
                     <div className="text-xl font-black text-indigo-400">EER: {(metrics.metric_comparison.cosine.eer * 100).toFixed(2)}%</div>
                     <div className="text-[10px] text-slate-500 mt-0.5">AUC: {metrics.metric_comparison.cosine.roc_auc.toFixed(4)}</div>
                   </div>
-                  <div className="flex-1 text-center p-2.5 rounded-lg bg-slate-800/50 border border-white/5">
-                    <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">Paper (370 subj.)</div>
-                    <div className="text-xl font-black text-indigo-300">EER: {(metrics.metric_comparison.cosine.paper_eer * 100).toFixed(2)}%</div>
-                    <div className="text-[10px] text-slate-500 mt-0.5">AUC: {metrics.metric_comparison.cosine.paper_auc.toFixed(4)}</div>
-                  </div>
+                  {evalMode === 'full' && (
+                    <div className="flex-1 text-center p-2.5 rounded-lg bg-slate-800/50 border border-white/5">
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">Paper (370 subj.)</div>
+                      <div className="text-xl font-black text-indigo-300">EER: {(metrics.metric_comparison.cosine.paper_eer * 100).toFixed(2)}%</div>
+                      <div className="text-[10px] text-slate-500 mt-0.5">AUC: {metrics.metric_comparison.cosine.paper_auc.toFixed(4)}</div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="bg-slate-950/40 p-4 rounded-xl border border-white/5 flex flex-col">
                 <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider text-center mb-3">Euclidean L2 Distance</span>
                 <div className="flex gap-3">
                   <div className="flex-1 text-center p-2.5 rounded-lg bg-slate-700/20 border border-white/5">
-                    <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">{evalMode === 'demo' ? 'Demo (25 subj.)' : 'Live (all subj.)'}</div>
+                    <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">{evalMode === 'demo' ? 'Demo (25 subj.)' : 'Live (25 subj.)'}</div>
                     <div className="text-xl font-black text-slate-400">EER: {(metrics.metric_comparison.euclidean.eer * 100).toFixed(2)}%</div>
                     <div className="text-[10px] text-slate-500 mt-0.5">AUC: {metrics.metric_comparison.euclidean.roc_auc.toFixed(4)}</div>
                   </div>
-                  <div className="flex-1 text-center p-2.5 rounded-lg bg-slate-800/50 border border-white/5">
-                    <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">Paper (370 subj.)</div>
-                    <div className="text-xl font-black text-slate-500">EER: {(metrics.metric_comparison.euclidean.paper_eer * 100).toFixed(2)}%</div>
-                    <div className="text-[10px] text-slate-500 mt-0.5">AUC: {metrics.metric_comparison.euclidean.paper_auc.toFixed(4)}</div>
-                  </div>
+                  {evalMode === 'full' && (
+                    <div className="flex-1 text-center p-2.5 rounded-lg bg-slate-800/50 border border-white/5">
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-1">Paper (370 subj.)</div>
+                      <div className="text-xl font-black text-slate-500">EER: {(metrics.metric_comparison.euclidean.paper_eer * 100).toFixed(2)}%</div>
+                      <div className="text-[10px] text-slate-500 mt-0.5">AUC: {metrics.metric_comparison.euclidean.paper_auc.toFixed(4)}</div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
